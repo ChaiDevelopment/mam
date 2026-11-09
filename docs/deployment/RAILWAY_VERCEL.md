@@ -108,3 +108,42 @@ Afterwards create the first admin from your PC against the Railway database:
   `MAX_UPLOAD_BYTES` before launch.
 * Vercel function timeouts apply to the proxy (slow API calls > the plan limit fail).
 * Railway Redis/PostGIS are single instances — enable Railway backups or run `infrastructure/scripts/backup.sh` on a schedule.
+
+---
+
+# Option B: everything on Railway (no Vercel)
+
+One Railway project (region **Singapore** for Indonesian users) with 5 services:
+
+| Service | Source | Railway settings |
+|---|---|---|
+| `api` | GitHub repo | Config file: `railway.json` (default) |
+| `web` | same repo | Settings → Config-as-code path: `infrastructure/railway/web.railway.json`; variable `APP=web` |
+| `admin` | same repo | Config-as-code path: `infrastructure/railway/admin.railway.json`; variable `APP=admin` |
+| `PostGIS` | template "PostGIS" | — |
+| `Redis` | template "Redis" | — |
+
+Railway passes service variables to the Dockerfile as build args, so `APP` selects web or admin and the
+`NEXT_PUBLIC_*` values are baked in at build time.
+
+**api**: the variables in section 1, except storage: instead of S3 attach a **Volume** mounted at `/data/storage`
+and set `STORAGE_DRIVER=local`, `STORAGE_LOCAL_DIR=/data/storage` (photos and brand logos). Copy
+`apps/api/storage/brands` into the volume once (e.g. `railway ssh` + upload, or temporarily expose and use `railway run`).
+
+**web** variables:
+
+| Variable | Value |
+|---|---|
+| `APP` | `web` |
+| `API_INTERNAL_URL` | `http://${{api.RAILWAY_PRIVATE_DOMAIN}}:${{api.PORT}}` (private network, no public hop) |
+| `NEXT_PUBLIC_SITE_URL` | public web URL, e.g. `https://mam.id` |
+| `NEXT_PUBLIC_MAP_TILE_URL` / `NEXT_PUBLIC_MAP_TILE_ATTRIBUTION` | tile provider (required for production traffic) |
+
+**admin** variables: `APP=admin`, `API_INTERNAL_URL` as above.
+
+Generate public domains for `web` and `admin` (and attach custom domains). The `api` service does not need a public
+domain in this setup unless Android or external clients call it directly — if it does, set `API_PUBLIC_URL`.
+`WEB_PUBLIC_URL`, `ADMIN_PUBLIC_URL` and `CORS_ORIGINS` on the API point at the web/admin domains.
+
+Advantages over Vercel: no ~4.5 MB request-body limit for photo uploads, private networking to the API, one bill.
+Trade-off: no global edge CDN (single region).
