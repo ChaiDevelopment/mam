@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mam_background">#FFF9F0</color>
+    <color name="mam_primary">#FF9F43</color>
+    <color name="mam_accent">#FF6B6B</color>
+</resources>

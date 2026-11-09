@@ -1,0 +1,15 @@
+**/node_modules
+**/.next
+**/dist
+**/dist-seed
+**/coverage
+**/.env
+**/.env.*
+!**/.env.example
+.git
+.devtools
+apps/android
+**/storage
+**/test-results
+**/playwright-report
+*.log

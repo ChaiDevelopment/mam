@@ -1,0 +1,1690 @@
+{
+ "generatedAt": "2026-11-07T12:16:27.706Z",
+ "sources": [
+  "OSM NDJSON /d/mam/.devtools/osm/*.ndjson (tags.brand / tags.name)",
+  "Wikidata API (wbsearchentities, wbgetentities) https://www.wikidata.org/w/api.php",
+  "Wikimedia Commons API https://commons.wikimedia.org/w/api.php (imageinfo/extmetadata)",
+  "descriptionId, aliases, category: editorial knowledge (not from APIs)"
+ ],
+ "brands": [
+  {
+   "name": "KFC",
+   "aliases": [
+    "Kentucky Fried Chicken"
+   ],
+   "wikidata": "Q524757",
+   "description": "American fast food restaurant chain specializing in fried chicken",
+   "descriptionId": "Jaringan restoran cepat saji ayam goreng asal Amerika Serikat yang sangat populer di Indonesia.",
+   "website": "https://www.kfc.com/",
+   "category": "fast-food",
+   "osmPlaceCount": 401,
+   "logo": {
+    "file": "File:KFC 2026 (wordmark).svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/KFC_2026_%28wordmark%29.svg/330px-KFC_2026_%28wordmark%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/KFC_2026_%28wordmark%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Yum! Brands",
+    "credit": "https://global.kfc.com/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:KFC_2026_(wordmark).svg"
+   },
+   "image": {
+    "file": "File:A modern KFC restaurant in Murphy, North Carolina.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/A_modern_KFC_restaurant_in_Murphy%2C_North_Carolina.jpg/330px-A_modern_KFC_restaurant_in_Murphy%2C_North_Carolina.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/A_modern_KFC_restaurant_in_Murphy%2C_North_Carolina.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Harrison Keely",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_modern_KFC_restaurant_in_Murphy,_North_Carolina.jpg"
+   }
+  },
+  {
+   "name": "Starbucks",
+   "aliases": [
+    "Starbucks Coffee"
+   ],
+   "wikidata": "Q37158",
+   "description": "American multinational coffee company",
+   "descriptionId": "Jaringan kedai kopi global asal Seattle, Amerika Serikat, dengan banyak gerai di Indonesia.",
+   "website": "https://www.starbucks.com/",
+   "category": "coffee",
+   "osmPlaceCount": 292,
+   "logo": {
+    "file": "File:Starbucks coffee wordmark.png",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Starbucks_coffee_wordmark.png/330px-Starbucks_coffee_wordmark.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Starbucks_coffee_wordmark.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Unknown authorUnknown author",
+    "credit": "http://logok.org/starbucks-logo/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starbucks_coffee_wordmark.png"
+   },
+   "image": {
+    "file": "File:Starbuckscenter.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Starbuckscenter.jpg/330px-Starbuckscenter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Starbuckscenter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Coolcaesar",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starbuckscenter.jpg"
+   }
+  },
+  {
+   "name": "McDonald's",
+   "aliases": [
+    "McD",
+    "McDonalds",
+    "McDonald’s"
+   ],
+   "wikidata": "Q38076",
+   "description": "American fast food restaurant chain",
+   "descriptionId": "Jaringan restoran cepat saji burger asal Amerika Serikat; di Indonesia dikenal dengan sebutan McD dan layanan McDelivery.",
+   "website": "https://www.mcdonalds.com",
+   "category": "fast-food",
+   "osmPlaceCount": 248,
+   "logo": {
+    "file": "File:McDonald'sshadow.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/McDonald%27sshadow.svg/330px-McDonald%27sshadow.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/McDonald%27sshadow.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "McDonald's Corporation",
+    "credit": "https://www.mcdonalds.com/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:McDonald%27sshadow.svg"
+   },
+   "image": {
+    "file": "File:New-McDonald-HU-lg (43261171540).jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/New-McDonald-HU-lg_%2843261171540%29.jpg/330px-New-McDonald-HU-lg_%2843261171540%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/New-McDonald-HU-lg_%2843261171540%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "author": "Dirk Tussing from Chicago IL, United States",
+    "credit": "New-McDonald-HU-lg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:New-McDonald-HU-lg_(43261171540).jpg"
+   }
+  },
+  {
+   "name": "Pizza Hut",
+   "aliases": [],
+   "wikidata": "Q191615",
+   "description": "American restaurant chain and international franchise",
+   "descriptionId": "Jaringan restoran pizza asal Amerika Serikat yang melayani makan di tempat dan pesan antar di Indonesia.",
+   "website": "https://www.pizzahut.com/",
+   "category": "western",
+   "osmPlaceCount": 202,
+   "logo": {
+    "file": "File:Pizza Hut 2025.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Pizza_Hut_2025.svg/330px-Pizza_Hut_2025.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Pizza_Hut_2025.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Yum! Brands",
+    "credit": "Own work based on: Pizza Hut 2025.png",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pizza_Hut_2025.svg"
+   },
+   "image": {
+    "file": "File:Pizza Hut Athens OH USA.JPG",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Pizza_Hut_Athens_OH_USA.JPG/330px-Pizza_Hut_Athens_OH_USA.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Pizza_Hut_Athens_OH_USA.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Ed!(talk)(Hall of Fame)",
+    "credit": "Own work (Original text: I created this work entirely by myself.)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pizza_Hut_Athens_OH_USA.JPG"
+   }
+  },
+  {
+   "name": "Rumah Makan Sederhana",
+   "aliases": [
+    "RM Sederhana",
+    "Padang Sederhana",
+    "Sederhana"
+   ],
+   "wikidata": "Q20427355",
+   "description": "Indonesian fast food restaurant",
+   "descriptionId": "Jaringan rumah makan Padang terkenal dengan nasi Padang dan rendang.",
+   "website": null,
+   "category": "indonesian",
+   "osmPlaceCount": 161,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "Restoran Sederhana"
+  },
+  {
+   "name": "Holland Bakery",
+   "aliases": [
+    "Holland"
+   ],
+   "wikidata": "Q19726345",
+   "description": "Indonesian bakery chain",
+   "descriptionId": "Jaringan toko roti dan kue lokal Indonesia, terkenal dengan roti manis, kue ulang tahun, dan bakpia.",
+   "website": "https://www.hollandbakery.co.id",
+   "category": "bakery",
+   "osmPlaceCount": 155,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Mixue",
+   "aliases": [
+    "Mixue Ice Cream & Tea",
+    "Mixue Ice Cream and Tea"
+   ],
+   "wikidata": "Q107406476",
+   "description": "company based in Zhengzhou, Henan, China, running ice cream and beverage shops",
+   "descriptionId": "Jaringan es krim dan teh murah asal Tiongkok, sangat populer di Indonesia dengan maskot Snow King.",
+   "website": "https://www.mxbc.com/",
+   "category": "beverages",
+   "osmPlaceCount": 146,
+   "logo": null,
+   "image": {
+    "file": "File:20250614 Mixue Headquarters 01.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/20250614_Mixue_Headquarters_01.jpg/330px-20250614_Mixue_Headquarters_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/20250614_Mixue_Headquarters_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Windmemories",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20250614_Mixue_Headquarters_01.jpg"
+   },
+   "wikidataLabel": "Mixue Ice Cream & Tea"
+  },
+  {
+   "name": "Kopi Kenangan",
+   "aliases": [
+    "Kenangan"
+   ],
+   "wikidata": "Q97221992",
+   "description": "coffee company in Indonesia",
+   "descriptionId": "Jaringan kopi kekinian Indonesia yang berdiri 2017, terkenal dengan Kopi Kenangan Mantan dan gerai take-away.",
+   "website": "https://kopikenangan.com/",
+   "category": "coffee",
+   "osmPlaceCount": 124,
+   "logo": {
+    "file": "File:Kopi Kenangan.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Kopi_Kenangan.svg/330px-Kopi_Kenangan.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Kopi_Kenangan.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "PT. Bumi Berkah Boga",
+    "credit": "https://static.wikia.nocookie.net/logopedia/images/7/7d/Kopi_Kenangan.svg/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kopi_Kenangan.svg"
+   },
+   "image": null
+  },
+  {
+   "name": "HokBen",
+   "aliases": [
+    "Hoka Hoka Bento",
+    "Hoka-Hoka Bento"
+   ],
+   "wikidata": "Q5877948",
+   "description": "Indonesian company",
+   "descriptionId": "Restoran cepat saji bergaya Jepang (bento) yang dikelola lokal dan sangat populer di Indonesia.",
+   "website": "https://www.hokben.co.id",
+   "category": "japanese",
+   "osmPlaceCount": 103,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Mie Gacoan",
+   "aliases": [
+    "Gacoan",
+    "Gacoan Mie"
+   ],
+   "wikidata": "Q111995141",
+   "description": "Indonesian noodle restaurant chain",
+   "descriptionId": "Jaringan restoran mi pedas murah meriah asal Malang, terkenal dengan Mie Suit, Mie Setan, dan Udang Rambutan.",
+   "website": "https://www.miegacoan.com/",
+   "category": "indonesian",
+   "osmPlaceCount": 102,
+   "logo": null,
+   "image": {
+    "file": "File:Mie Gacoan Raya Kuta Bali.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Mie_Gacoan_Raya_Kuta_Bali.jpg/330px-Mie_Gacoan_Raya_Kuta_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Mie_Gacoan_Raya_Kuta_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Ardfeb",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mie_Gacoan_Raya_Kuta_Bali.jpg"
+   }
+  },
+  {
+   "name": "Richeese Factory",
+   "aliases": [
+    "Richeese",
+    "Rich Eese"
+   ],
+   "wikidata": "Q22915087",
+   "description": "Indonesian fast food restaurant chain",
+   "descriptionId": "Jaringan restoran ayam goreng berkeju dan pedas dari Indonesia, terkenal dengan Fire Chicken dan saus keju.",
+   "website": "http://richeesefactory.com",
+   "category": "fast-food",
+   "osmPlaceCount": 96,
+   "logo": {
+    "file": "File:Richeese Factory Logo.jpg",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Richeese_Factory_Logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Richeese_Factory_Logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Richeese Factory",
+    "credit": "https://www.richeesefactory.com/id",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Richeese_Factory_Logo.jpg"
+   },
+   "image": {
+    "file": "File:Ayam Richesee.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Ayam_Richesee.jpg/330px-Ayam_Richesee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Ayam_Richesee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Cendy00",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ayam_Richesee.jpg"
+   }
+  },
+  {
+   "name": "Dunkin'",
+   "aliases": [
+    "Dunkin' Donuts",
+    "Dunkin Donuts",
+    "Dunkin"
+   ],
+   "wikidata": "Q847743",
+   "description": "American global donut company and coffeehouse",
+   "descriptionId": "Jaringan donat dan kopi asal Amerika Serikat dengan banyak gerai di mal Indonesia.",
+   "website": "https://www.dunkindonuts.com/",
+   "category": "dessert",
+   "osmPlaceCount": 93,
+   "logo": {
+    "file": "File:Dunkin' logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Dunkin%27_logo.svg/330px-Dunkin%27_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Dunkin%27_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Dunkin' Donuts",
+    "credit": "http://www.dunkindonuts.com/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dunkin%27_logo.svg"
+   },
+   "image": {
+    "file": "File:Former Dunkin' Donuts.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Former_Dunkin%27_Donuts.jpg/330px-Former_Dunkin%27_Donuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Former_Dunkin%27_Donuts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Bull-Doser",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Former_Dunkin%27_Donuts.jpg"
+   }
+  },
+  {
+   "name": "Point Coffee",
+   "aliases": [
+    "Point Coffee Indonesia"
+   ],
+   "wikidata": "Q124651558",
+   "description": "coffee shop chain in Indonesia",
+   "descriptionId": "Kedai kopi milik jaringan Indomaret yang menjual kopi terjangkau di banyak gerai.",
+   "website": "https://pointcoffee.id/",
+   "category": "coffee",
+   "osmPlaceCount": 92,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Burger King",
+   "aliases": [
+    "BK"
+   ],
+   "wikidata": "Q177054",
+   "description": "global chain of hamburger fast food restaurants headquartered in Florida, United States",
+   "descriptionId": "Jaringan restoran cepat saji burger asal Amerika Serikat, terkenal dengan Whopper.",
+   "website": "https://www.bk.com/",
+   "category": "fast-food",
+   "osmPlaceCount": 89,
+   "logo": {
+    "file": "File:Burger King logo (1999–2020).svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Burger_King_logo_%281999%E2%80%932020%29.svg/330px-Burger_King_logo_%281999%E2%80%932020%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Burger_King_logo_%281999%E2%80%932020%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Burger King",
+    "credit": "http://www.bk.com/Nutrition/PDFs/brochure.pdf",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Burger_King_logo_(1999%E2%80%932020).svg"
+   },
+   "image": {
+    "file": "File:Burgerkingheadquarters.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Burgerkingheadquarters.jpg/330px-Burgerkingheadquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Burgerkingheadquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "Coolcaesar at English Wikipedia",
+    "credit": "Transferred from en.wikipedia to Commons by Oxyman using CommonsHelper.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Burgerkingheadquarters.jpg"
+   }
+  },
+  {
+   "name": "Roti'O",
+   "aliases": [
+    "Roti O",
+    "Rotio",
+    "Roti' O"
+   ],
+   "wikidata": "Q124354233",
+   "description": "bakery chain in Indonesia",
+   "descriptionId": "Roti bun khas Indonesia berisi mentega dengan lapisan kopi, dijual hangat di gerai bergaya kios.",
+   "website": "https://rotio.id/",
+   "category": "bakery",
+   "osmPlaceCount": 81,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "J.CO Donuts & Coffee",
+   "aliases": [
+    "J.Co",
+    "JCO",
+    "J.Co Donuts'",
+    "J.CO"
+   ],
+   "wikidata": "Q4260444",
+   "description": "Indonesian cafe restaurant chain",
+   "descriptionId": "Jaringan donat dan kopi premium milik Indonesia, terkenal dengan Alcapone dan Tiramisu.",
+   "website": "https://www.jcodonuts.com/id/en",
+   "category": "dessert",
+   "osmPlaceCount": 79,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "J.CO Donuts"
+  },
+  {
+   "name": "Solaria",
+   "aliases": [],
+   "wikidata": "Q118136107",
+   "description": "Indonesian company",
+   "descriptionId": "Jaringan restoran keluarga Indonesia dengan menu Nusantara dan Tionghoa seperti nasi goreng, bakmi, dan sop.",
+   "website": "https://solariaresto.co.id/",
+   "category": "indonesian",
+   "osmPlaceCount": 78,
+   "logo": null,
+   "image": {
+    "file": "File:Nasi goreng Solaria Kuta.JPG",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Nasi_goreng_Solaria_Kuta.JPG/330px-Nasi_goreng_Solaria_Kuta.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Nasi_goreng_Solaria_Kuta.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "author": "Midori",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nasi_goreng_Solaria_Kuta.JPG"
+   }
+  },
+  {
+   "name": "California Fried Chicken",
+   "aliases": [
+    "CFC"
+   ],
+   "wikidata": "Q5020502",
+   "description": "Indonesian restaurant chain",
+   "descriptionId": "Jaringan ayam goreng cepat saji lokal Indonesia yang tersebar di berbagai kota.",
+   "website": "https://www.cfcindonesia.com/",
+   "category": "fast-food",
+   "osmPlaceCount": 77,
+   "logo": null,
+   "image": {
+    "file": "File:California Fried Chicken Yogyakarta.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/California_Fried_Chicken_Yogyakarta.jpg/330px-California_Fried_Chicken_Yogyakarta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/California_Fried_Chicken_Yogyakarta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Crisco 1492",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:California_Fried_Chicken_Yogyakarta.jpg"
+   }
+  },
+  {
+   "name": "Tomoro Coffee",
+   "aliases": [
+    "TOMORO",
+    "Tomoro"
+   ],
+   "wikidata": "Q126326801",
+   "description": "coffee shop chain in East and Southeast Asia",
+   "descriptionId": "Jaringan kopi kekinian asal Tiongkok yang berkembang pesat di Indonesia dengan harga terjangkau.",
+   "website": "https://www.tomoro-coffee.id/about",
+   "category": "coffee",
+   "osmPlaceCount": 71,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "TOMORO Coffee"
+  },
+  {
+   "name": "Domino's Pizza",
+   "aliases": [
+    "Domino's",
+    "Dominos"
+   ],
+   "wikidata": "Q839466",
+   "description": "American pizza restaurant chain",
+   "descriptionId": "Jaringan pizza asal Amerika Serikat yang berfokus pada pesan antar dan bawa pulang.",
+   "website": "https://www.dominos.com/",
+   "category": "western",
+   "osmPlaceCount": 68,
+   "logo": {
+    "file": "File:Dominos pizza logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Dominos_pizza_logo.svg/330px-Dominos_pizza_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Dominos_pizza_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Domino's Pizza, Inc.",
+    "credit": "Redrawn by Daelin Transferred from en.wikipedia by Sreejithk2000",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dominos_pizza_logo.svg"
+   },
+   "image": {
+    "file": "File:Domino's Pizza Lobby Entrance Domino's Farms Ann Arbor Township Michigan.JPG",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Domino%27s_Pizza_Lobby_Entrance_Domino%27s_Farms_Ann_Arbor_Township_Michigan.JPG/330px-Domino%27s_Pizza_Lobby_Entrance_Domino%27s_Farms_Ann_Arbor_Township_Michigan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Domino%27s_Pizza_Lobby_Entrance_Domino%27s_Farms_Ann_Arbor_Township_Michigan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "author": "Dwight Burdette",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Domino%27s_Pizza_Lobby_Entrance_Domino%27s_Farms_Ann_Arbor_Township_Michigan.JPG"
+   }
+  },
+  {
+   "name": "Janji Jiwa",
+   "aliases": [
+    "Kopi Janji Jiwa",
+    "Jiwa Toast"
+   ],
+   "wikidata": "Q124030785",
+   "description": "coffee shop chain in Indonesia",
+   "descriptionId": "Jaringan kopi kekinian Indonesia dengan gerai di banyak kota, terkenal dengan es kopi susunya.",
+   "website": "https://jiwagroup.com/id/",
+   "category": "coffee",
+   "osmPlaceCount": 64,
+   "logo": {
+    "file": "File:Janji Jiwa Logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Janji_Jiwa_Logo.svg/330px-Janji_Jiwa_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Janji_Jiwa_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "PT Luna Boga Narayan",
+    "credit": "Extracted from https://jiwagroup.com/media/brand/brand_logo-1696822776Logo-JJ.png",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Janji_Jiwa_Logo.svg"
+   },
+   "image": null
+  },
+  {
+   "name": "A&W",
+   "aliases": [
+    "A and W"
+   ],
+   "wikidata": "Q277641",
+   "description": "American fast food chain",
+   "descriptionId": "Jaringan restoran cepat saji asal Amerika Serikat yang terkenal dengan root beer.",
+   "website": "https://www.awrestaurants.com",
+   "category": "fast-food",
+   "osmPlaceCount": 61,
+   "logo": {
+    "file": "File:All American Food Logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/All_American_Food_Logo.svg/330px-All_American_Food_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/All_American_Food_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Unknown authorUnknown author",
+    "credit": "SVG erstellt mit Inkscape",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:All_American_Food_Logo.svg"
+   },
+   "image": {
+    "file": "File:A&W restaurant in Page, Arizona.jpeg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/A%26W_restaurant_in_Page%2C_Arizona.jpeg/330px-A%26W_restaurant_in_Page%2C_Arizona.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/A%26W_restaurant_in_Page%2C_Arizona.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "The original uploader was Mav at English Wikipedia.",
+    "credit": "Transferred from en.wikipedia to Commons by IngerAlHaosului using CommonsHelper.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:A%26W_restaurant_in_Page,_Arizona.jpeg"
+   },
+   "wikidataLabel": "A&W Restaurants"
+  },
+  {
+   "name": "Chatime",
+   "aliases": [
+    "Cha Time"
+   ],
+   "wikidata": "Q16829306",
+   "description": "Taiwanese global franchise teahouse chain based in Taiwan",
+   "descriptionId": "Jaringan minuman teh susu mutiara (boba) asal Taiwan yang populer di Indonesia.",
+   "website": "https://www.chatime.com.tw",
+   "category": "beverages",
+   "osmPlaceCount": 59,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Rocket Chicken",
+   "aliases": [],
+   "wikidata": "Q67462086",
+   "description": "Indonesian company",
+   "descriptionId": "Jaringan ayam goreng cepat saji lokal Indonesia berharga terjangkau.",
+   "website": "https://rocketchicken.co.id/",
+   "category": "fast-food",
+   "osmPlaceCount": 57,
+   "logo": {
+    "file": "File:Rocket Chicken Indonesia (2010) - transparent background.png",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Rocket_Chicken_Indonesia_%282010%29_-_transparent_background.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Rocket_Chicken_Indonesia_%282010%29_-_transparent_background.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "PT. Rocket Chicken Indonesia",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rocket_Chicken_Indonesia_(2010)_-_transparent_background.png"
+   },
+   "image": {
+    "file": "File:Rocket Chicken Gayam at Yogyakarta.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Rocket_Chicken_Gayam_at_Yogyakarta.jpg/330px-Rocket_Chicken_Gayam_at_Yogyakarta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Rocket_Chicken_Gayam_at_Yogyakarta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Fastha Fahreza",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rocket_Chicken_Gayam_at_Yogyakarta.jpg"
+   }
+  },
+  {
+   "name": "Yoshinoya",
+   "aliases": [],
+   "wikidata": "Q776272",
+   "description": "Japanese restaurant chain",
+   "descriptionId": "Jaringan restoran gyudon (nasi daging sapi) asal Jepang yang banyak ditemui di mal Indonesia.",
+   "website": "https://www.yoshinoya.com/",
+   "category": "japanese",
+   "osmPlaceCount": 44,
+   "logo": {
+    "file": "File:Yoshina new logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Yoshina_new_logo.svg/330px-Yoshina_new_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Yoshina_new_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Yoshinoya Co. Ltd.",
+    "credit": "Here and here",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yoshina_new_logo.svg"
+   },
+   "image": {
+    "file": "File:Riverside Yomiuri Building (17582363).jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Riverside_Yomiuri_Building_%2817582363%29.jpg/330px-Riverside_Yomiuri_Building_%2817582363%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Riverside_Yomiuri_Building_%2817582363%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "author": "Joe Jones from Philadelphia, USA",
+    "credit": "Flickr",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Riverside_Yomiuri_Building_(17582363).jpg"
+   }
+  },
+  {
+   "name": "Momoyo",
+   "aliases": [],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Jaringan es krim dan kafe dengan berbagai dessert.",
+   "website": null,
+   "category": "dessert",
+   "osmPlaceCount": 40,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Kopi Tuku",
+   "aliases": [
+    "Toko Kopi Tuku",
+    "Tuku"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Kedai kopi lokal Jakarta dengan Es Kopi Susu Tetangga yang terkenal.",
+   "website": null,
+   "category": "coffee",
+   "osmPlaceCount": 35,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Fore Coffee",
+   "aliases": [
+    "Fore"
+   ],
+   "wikidata": "Q66424373",
+   "description": "cafe chain in Indonesia",
+   "descriptionId": "Jaringan kopi lokal Indonesia berdiri 2018, dikenal dengan Aren Latte dan layanan pesan digital.",
+   "website": "https://fore.coffee",
+   "category": "coffee",
+   "osmPlaceCount": 32,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "The Harvest",
+   "aliases": [
+    "Harvest"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Toko kue dan patisserie Indonesia yang terkenal dengan cake dan cokelat.",
+   "website": null,
+   "category": "bakery",
+   "osmPlaceCount": 30,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Warunk Upnormal",
+   "aliases": [
+    "Upnormal",
+    "Warung Upnormal"
+   ],
+   "wikidata": "Q67463292",
+   "description": "Indonesian fast food restaurant chain",
+   "descriptionId": "Jaringan kafe dan warung makan modern Indonesia, terkenal dengan mi instan kreatif dan es kopi.",
+   "website": "https://www.warunkupnormal.com/",
+   "category": "indonesian",
+   "osmPlaceCount": 28,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Ayam Bakar Wong Solo",
+   "aliases": [
+    "Wong Solo"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Rumah makan ayam bakar khas Jawa asal Solo dengan banyak cabang.",
+   "website": null,
+   "category": "indonesian",
+   "osmPlaceCount": 27,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Sushi Tei",
+   "aliases": [],
+   "wikidata": "Q122534663",
+   "description": "Singaporean food chain company",
+   "descriptionId": "Jaringan restoran sushi asal Singapura, populer di mal-mal Indonesia.",
+   "website": "https://sushitei.com/",
+   "category": "japanese",
+   "osmPlaceCount": 26,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Waroeng Steak & Shake",
+   "aliases": [
+    "Waroeng Steak",
+    "Waroeng Steak and Shake"
+   ],
+   "wikidata": "Q13098421",
+   "description": "restoran steak indonesia",
+   "descriptionId": "Jaringan restoran steak terjangkau asal Yogyakarta.",
+   "website": "https://waroengsteakandshake.com/",
+   "category": "western",
+   "osmPlaceCount": 26,
+   "logo": null,
+   "image": {
+    "file": "File:Waroeng Steak & Shake Jember.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Waroeng_Steak_%26_Shake_Jember.jpg/330px-Waroeng_Steak_%26_Shake_Jember.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Waroeng_Steak_%26_Shake_Jember.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Ardfeb",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Waroeng_Steak_%26_Shake_Jember.jpg"
+   }
+  },
+  {
+   "name": "MAKO Cake and Bakery",
+   "aliases": [
+    "Mako Bakery"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Toko kue dan roti di Indonesia yang menjual kue basah, roti, dan kue tart.",
+   "website": null,
+   "category": "bakery",
+   "osmPlaceCount": 22,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Excelso",
+   "aliases": [
+    "Kopi Excelso"
+   ],
+   "wikidata": "Q12482656",
+   "description": "Indonesian company",
+   "descriptionId": "Merek kopi Indonesia dari Kapal Api Group dengan kafe di berbagai kota.",
+   "website": null,
+   "category": "coffee",
+   "osmPlaceCount": 20,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Subway",
+   "aliases": [],
+   "wikidata": "Q244457",
+   "description": "American sandwich restaurant chain",
+   "descriptionId": "Jaringan restoran sandwich sub asal Amerika Serikat yang isinya dapat dipilih sendiri.",
+   "website": "https://subway.com",
+   "category": "western",
+   "osmPlaceCount": 19,
+   "logo": {
+    "file": "File:Alternative subway logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Alternative_subway_logo.svg/330px-Alternative_subway_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Alternative_subway_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "The original uploader was Koman90 at English Wikipedia.",
+    "credit": "This vector image was created by converting the Encapsulated PostScript file available at Brands of the World (view • download). Remember not all content there is in general free, see Commons:Fair use for more.This tag does not indicate the copyright status of the attached work. A normal copyright tag is still required. See Commons:Licensing.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alternative_subway_logo.svg"
+   },
+   "image": {
+    "file": "File:Subway in Stanhope, NJ.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Subway_in_Stanhope%2C_NJ.jpg/330px-Subway_in_Stanhope%2C_NJ.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Subway_in_Stanhope%2C_NJ.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "CHICHI7YT",
+    "credit": "I was in the area.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Subway_in_Stanhope,_NJ.jpg"
+   }
+  },
+  {
+   "name": "Marugame Seimen",
+   "aliases": [
+    "Marugame Udon"
+   ],
+   "wikidata": "Q10877253",
+   "description": "Udon specialized Japanese fast-food chain",
+   "descriptionId": "Jaringan restoran udon swalayan asal Jepang, terkenal dengan udon segar dan tempura.",
+   "website": "https://jp.marugame.com/",
+   "category": "japanese",
+   "osmPlaceCount": 19,
+   "logo": {
+    "file": "File:Marugame Seimen logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Marugame_Seimen_logo.svg/330px-Marugame_Seimen_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Marugame_Seimen_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "丸亀製麺",
+    "credit": "https://jp.marugame.com",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marugame_Seimen_logo.svg"
+   },
+   "image": {
+    "file": "File:Marugame Seimen Kakogawa shop on 1st November 2020.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Marugame_Seimen_Kakogawa_shop_on_1st_November_2020.jpg/330px-Marugame_Seimen_Kakogawa_shop_on_1st_November_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Marugame_Seimen_Kakogawa_shop_on_1st_November_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Tokumeigakarinoaoshima",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marugame_Seimen_Kakogawa_shop_on_1st_November_2020.jpg"
+   }
+  },
+  {
+   "name": "Bakmi GM",
+   "aliases": [
+    "GM",
+    "Bakmi Gajah Mada"
+   ],
+   "wikidata": "Q25464984",
+   "description": "Indonesian noodles restaurant chain",
+   "descriptionId": "Restoran bakmi legendaris dari Jakarta dengan mi, pangsit, dan bakso khas.",
+   "website": null,
+   "category": "chinese",
+   "osmPlaceCount": 19,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Pepper Lunch",
+   "aliases": [],
+   "wikidata": "Q1016072",
+   "description": "Japanese restaurant chain",
+   "descriptionId": "Restoran steak dan nasi di atas hot plate asal Jepang.",
+   "website": "https://pepperlunch.com/",
+   "category": "japanese",
+   "osmPlaceCount": 18,
+   "logo": {
+    "file": "File:Pepper Lunch Logo.png",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/9/96/Pepper_Lunch_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Pepper_Lunch_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "© Hot Palette Co., Ltd.",
+    "credit": "https://pepperlunch.com/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pepper_Lunch_Logo.png"
+   },
+   "image": {
+    "file": "File:Pepper Lunch.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Pepper_Lunch.jpg/330px-Pepper_Lunch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Pepper_Lunch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "MASA",
+    "credit": "GFDL",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pepper_Lunch.jpg"
+   }
+  },
+  {
+   "name": "Sate Khas Senayan",
+   "aliases": [
+    "Senayan",
+    "Sate Senayan"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Restoran Indonesia modern dengan sate dan masakan khas Nusantara.",
+   "website": null,
+   "category": "indonesian",
+   "osmPlaceCount": 18,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "The Coffee Bean & Tea Leaf",
+   "aliases": [
+    "Coffee Bean",
+    "The Coffee Bean"
+   ],
+   "wikidata": "Q1141384",
+   "description": "American coffee shop chain",
+   "descriptionId": "Jaringan kedai kopi dan teh asal California, Amerika Serikat, dengan gerai di mal besar Indonesia.",
+   "website": "https://www.coffeebean.com",
+   "category": "coffee",
+   "osmPlaceCount": 17,
+   "logo": {
+    "file": "File:TCB&TL wordmark.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/TCB%26TL_wordmark.svg/330px-TCB%26TL_wordmark.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/TCB%26TL_wordmark.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "The Coffee Bean & Tea Leaf",
+    "credit": "Own work based on: official website",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:TCB%26TL_wordmark.svg"
+   },
+   "image": {
+    "file": "File:Wikipedia Wikimeetup1 Mumbai The Coffee Bean and Tea Leaf.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Wikipedia_Wikimeetup1_Mumbai_The_Coffee_Bean_and_Tea_Leaf.jpg/330px-Wikipedia_Wikimeetup1_Mumbai_The_Coffee_Bean_and_Tea_Leaf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Wikipedia_Wikimeetup1_Mumbai_The_Coffee_Bean_and_Tea_Leaf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "author": "Aditya Sengupta",
+    "credit": "originally posted to Flickr as The Coffee Bean and Tea Leaf",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wikipedia_Wikimeetup1_Mumbai_The_Coffee_Bean_and_Tea_Leaf.jpg"
+   }
+  },
+  {
+   "name": "Texas Chicken",
+   "aliases": [],
+   "wikidata": "Q1089932",
+   "description": "chicken restaurant chain",
+   "descriptionId": "Jaringan ayam goreng cepat saji asal Amerika Serikat dengan gerai di Indonesia.",
+   "website": null,
+   "category": "fast-food",
+   "osmPlaceCount": 17,
+   "logo": null,
+   "image": {
+    "file": "File:Churchs-logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Churchs-logo.svg/330px-Churchs-logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Churchs-logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Church's Texas Chicken",
+    "credit": "https://texaschicken.com/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Churchs-logo.svg"
+   },
+   "wikidataLabel": "Church's Texas Chicken"
+  },
+  {
+   "name": "Maxx Coffee",
+   "aliases": [],
+   "wikidata": "Q124651563",
+   "description": "coffee shop chain in Indonesia",
+   "descriptionId": "Jaringan kedai kopi yang hadir di berbagai kota di Indonesia.",
+   "website": "https://www.maxx-coffee.com/",
+   "category": "coffee",
+   "osmPlaceCount": 14,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Baskin-Robbins",
+   "aliases": [
+    "Baskin Robbins",
+    "BR"
+   ],
+   "wikidata": "Q584601",
+   "description": "American multinational ice cream parlor chain",
+   "descriptionId": "Jaringan es krim asal Amerika Serikat dengan puluhan varian rasa.",
+   "website": "https://www.baskinrobbins.com/",
+   "category": "dessert",
+   "osmPlaceCount": 13,
+   "logo": {
+    "file": "File:Baskin-Robbins logo 2022.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Baskin-Robbins_logo_2022.svg/330px-Baskin-Robbins_logo_2022.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Baskin-Robbins_logo_2022.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Baskin-Robbins",
+    "credit": "Own work based on: Baskin-Robbins logo 2022.png",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baskin-Robbins_logo_2022.svg"
+   },
+   "image": {
+    "file": "File:BaskinRobbinsMelrose.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/BaskinRobbinsMelrose.jpg/330px-BaskinRobbinsMelrose.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/BaskinRobbinsMelrose.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Minnaert",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BaskinRobbinsMelrose.jpg"
+   }
+  },
+  {
+   "name": "Haus!",
+   "aliases": [
+    "HAUS",
+    "Haus Indonesia"
+   ],
+   "wikidata": "Q114824757",
+   "description": "Bubble tea shop chain in Indonesia",
+   "descriptionId": "Jaringan minuman kekinian lokal Indonesia berharga terjangkau, terkenal dengan es teh dan kopi.",
+   "website": "https://haus.co.id/",
+   "category": "beverages",
+   "osmPlaceCount": 12,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Rotiboy",
+   "aliases": [
+    "Roti Boy"
+   ],
+   "wikidata": "Q2168802",
+   "description": "Malaysian multinational bakery chain",
+   "descriptionId": "Jaringan roti kopi asal Malaysia yang terkenal dengan roti berisi mentega.",
+   "website": "https://www.rotiboy.com",
+   "category": "bakery",
+   "osmPlaceCount": 12,
+   "logo": {
+    "file": "File:Rotiboy logo.png",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Rotiboy_logo.png/330px-Rotiboy_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Rotiboy_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Rotiboy Bakeshoppe Sdn Bhd",
+    "credit": "http://www.rotiboy.com/assets/logo-center.png",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rotiboy_logo.png"
+   },
+   "image": null
+  },
+  {
+   "name": "Wendy's",
+   "aliases": [
+    "Wendys"
+   ],
+   "wikidata": "Q550258",
+   "description": "American international fast food chain restaurant",
+   "descriptionId": "Jaringan restoran burger asal Amerika Serikat yang dikenal dengan burger berpatty persegi.",
+   "website": "https://www.wendys.com/",
+   "category": "fast-food",
+   "osmPlaceCount": 11,
+   "logo": {
+    "file": "File:Wendy's logo black.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Wendy%27s_logo_black.jpg/330px-Wendy%27s_logo_black.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Wendy%27s_logo_black.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Wendy's",
+    "credit": "http://www.freelogovector.com/gallery/w/Wendys%20logo.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wendy%27s_logo_black.jpg"
+   },
+   "image": {
+    "file": "File:Wendy's flagship restaurant (Dublin, Ohio).jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Wendy%27s_flagship_restaurant_%28Dublin%2C_Ohio%29.jpg/330px-Wendy%27s_flagship_restaurant_%28Dublin%2C_Ohio%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Wendy%27s_flagship_restaurant_%28Dublin%2C_Ohio%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Nheyob",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wendy%27s_flagship_restaurant_(Dublin,_Ohio).jpg"
+   }
+  },
+  {
+   "name": "Popeyes",
+   "aliases": [
+    "Popeyes Louisiana Kitchen"
+   ],
+   "wikidata": "Q1330910",
+   "description": "American multinational chain of fried chicken fast food restaurants",
+   "descriptionId": "Jaringan ayam goreng bergaya Louisiana asal Amerika Serikat.",
+   "website": null,
+   "category": "fast-food",
+   "osmPlaceCount": 11,
+   "logo": null,
+   "image": {
+    "file": "File:Popeyes Louisiana Kitchen (51195358373).jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Popeyes_Louisiana_Kitchen_%2851195358373%29.jpg/330px-Popeyes_Louisiana_Kitchen_%2851195358373%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Popeyes_Louisiana_Kitchen_%2851195358373%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "author": "Phillip Pessar",
+    "credit": "Popeyes Louisiana Kitchen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Popeyes_Louisiana_Kitchen_(51195358373).jpg"
+   }
+  },
+  {
+   "name": "Wingstop",
+   "aliases": [],
+   "wikidata": "Q8025339",
+   "description": "American fast food chain",
+   "descriptionId": "Jaringan restoran sayap ayam asal Amerika Serikat dengan aneka pilihan rasa.",
+   "website": "https://www.wingstop.com/",
+   "category": "fast-food",
+   "osmPlaceCount": 10,
+   "logo": null,
+   "image": {
+    "file": "File:Wingstop chicken and chips.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Wingstop_chicken_and_chips.jpg/330px-Wingstop_chicken_and_chips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Wingstop_chicken_and_chips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "author": "VulcanSphere",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wingstop_chicken_and_chips.jpg"
+   }
+  },
+  {
+   "name": "Gudeg Yu Djum",
+   "aliases": [
+    "Yu Djum"
+   ],
+   "wikidata": "Q19745849",
+   "description": "perusahaan asal Indonesia",
+   "descriptionId": "Warung gudeg legendaris Yogyakarta.",
+   "website": null,
+   "category": "indonesian",
+   "osmPlaceCount": 10,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Tous Les Jours",
+   "aliases": [],
+   "wikidata": "Q3535609",
+   "description": "South Korean bakery chain",
+   "descriptionId": "Jaringan toko roti bergaya Prancis asal Korea Selatan yang banyak ada di mal Indonesia.",
+   "website": "https://www.tlj.co.kr/",
+   "category": "bakery",
+   "osmPlaceCount": 9,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "Tous les Jours"
+  },
+  {
+   "name": "Es Teh Indonesia",
+   "aliases": [],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Jaringan minuman es teh murah dari Indonesia dengan banyak cabang.",
+   "website": null,
+   "category": "beverages",
+   "osmPlaceCount": 9,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Kebab Baba Rafi",
+   "aliases": [
+    "Baba Rafi",
+    "Kebab Turki Baba Rafi"
+   ],
+   "wikidata": "Q6382370",
+   "description": "Indonesian company",
+   "descriptionId": "Waralaba kebab Turki lokal Indonesia yang banyak dijual di gerai kecil.",
+   "website": "http://www.babarafi.co.id",
+   "category": "street-food",
+   "osmPlaceCount": 9,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "Kebab Turki Baba Rafi"
+  },
+  {
+   "name": "Bakso Boedjangan",
+   "aliases": [],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Jaringan bakso modern asal Indonesia dengan beragam bakso dan mi.",
+   "website": null,
+   "category": "indonesian",
+   "osmPlaceCount": 9,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Ayam Geprek Bensu",
+   "aliases": [
+    "Geprek Bensu",
+    "I Am Geprek Bensu"
+   ],
+   "wikidata": "Q96276741",
+   "description": "Indonesian company",
+   "descriptionId": "Waralaba ayam geprek yang didirikan oleh Ruben Onsu.",
+   "website": "https://geprekbensuindonesia.com",
+   "category": "indonesian",
+   "osmPlaceCount": 9,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "Geprek Bensu"
+  },
+  {
+   "name": "Cafe Coffee Day",
+   "aliases": [],
+   "wikidata": "Q5017235",
+   "description": "Indian coffee company",
+   "descriptionId": "Jaringan kafe asal India yang hadir di Indonesia.",
+   "website": "https://www.cafecoffeeday.com",
+   "category": "coffee",
+   "osmPlaceCount": 8,
+   "logo": {
+    "file": "File:CCD 2.jpg",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/CCD_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/CCD_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Nancy Anburaj",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CCD_2.jpg"
+   },
+   "image": null,
+   "wikidataLabel": "Café Coffee Day"
+  },
+  {
+   "name": "CoCo Fresh Tea & Juice",
+   "aliases": [
+    "CoCo",
+    "CoCo Tea"
+   ],
+   "wikidata": "Q65084369",
+   "description": "Global bubble tea drink franchise based in Taiwan",
+   "descriptionId": "Jaringan minuman teh asal Taiwan yang ada di Indonesia.",
+   "website": "https://www.coco-tea.com",
+   "category": "beverages",
+   "osmPlaceCount": 8,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Auntie Anne's",
+   "aliases": [],
+   "wikidata": "Q4822010",
+   "description": "American pretzel shops",
+   "descriptionId": "Jaringan pretzel asal Amerika Serikat dengan berbagai rasa.",
+   "website": "https://www.auntieannes.com/",
+   "category": "dessert",
+   "osmPlaceCount": 7,
+   "logo": {
+    "file": "File:Auntie Anne's logo and slogan.png",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Auntie_Anne%27s_logo_and_slogan.png/330px-Auntie_Anne%27s_logo_and_slogan.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Auntie_Anne%27s_logo_and_slogan.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Focus Brands",
+    "credit": "http://www.havesippywilltravel.com/2011/10/aunt-annes-pretzel-kit-and-recipe-make.html",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Auntie_Anne%27s_logo_and_slogan.png"
+   },
+   "image": {
+    "file": "File:Auntie Anne's in King of Prussia Mall.jpeg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Auntie_Anne%27s_in_King_of_Prussia_Mall.jpeg/330px-Auntie_Anne%27s_in_King_of_Prussia_Mall.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Auntie_Anne%27s_in_King_of_Prussia_Mall.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Dough4872",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Auntie_Anne%27s_in_King_of_Prussia_Mall.jpeg"
+   }
+  },
+  {
+   "name": "Gloria Jean's Coffees",
+   "aliases": [
+    "Gloria Jeans"
+   ],
+   "wikidata": "Q2666365",
+   "description": "American-Australian retail coffeehouse chain",
+   "descriptionId": "Jaringan kedai kopi asal Australia yang ada di mal-mal Indonesia.",
+   "website": "https://www.gloriajeans.com/",
+   "category": "coffee",
+   "osmPlaceCount": 7,
+   "logo": null,
+   "image": {
+    "file": "File:Gloria Jean's Coffee.JPG",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Gloria_Jean%27s_Coffee.JPG/330px-Gloria_Jean%27s_Coffee.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Gloria_Jean%27s_Coffee.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": null,
+    "credit": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gloria_Jean%27s_Coffee.JPG"
+   }
+  },
+  {
+   "name": "Flash Coffee",
+   "aliases": [],
+   "wikidata": "Q118627777",
+   "description": "Asian coffee house chain",
+   "descriptionId": "Jaringan kopi asal Singapura yang ada di Indonesia.",
+   "website": "https://flash-coffee.com",
+   "category": "coffee",
+   "osmPlaceCount": 7,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Black Canyon Coffee",
+   "aliases": [
+    "Black Canyon"
+   ],
+   "wikidata": "Q125870828",
+   "description": "chain of cafe shops in Thailand",
+   "descriptionId": "Jaringan kopi asal Thailand yang ada di Indonesia.",
+   "website": "https://blackcanyoncoffee.com/",
+   "category": "coffee",
+   "osmPlaceCount": 7,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "Black Canyon"
+  },
+  {
+   "name": "Quickly",
+   "aliases": [
+    "Quickly Tea"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Jaringan minuman teh susu mutiara asal Taiwan di Indonesia.",
+   "website": null,
+   "category": "beverages",
+   "osmPlaceCount": 7,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Loving Hut",
+   "aliases": [],
+   "wikidata": "Q3491655",
+   "description": "vegan restaurant chain",
+   "descriptionId": "Jaringan restoran vegetarian/vegan global.",
+   "website": "https://www.lovinghut.com/",
+   "category": "vegetarian",
+   "osmPlaceCount": 7,
+   "logo": {
+    "file": "File:Loving Hut wordmark.png",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/9/92/Loving_Hut_wordmark.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Loving_Hut_wordmark.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Loving Hut",
+    "credit": "http://www.lovinghut.com/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loving_Hut_wordmark.png"
+   },
+   "image": {
+    "file": "File:Loving Hut in Philadelphia.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Loving_Hut_in_Philadelphia.jpg/330px-Loving_Hut_in_Philadelphia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Loving_Hut_in_Philadelphia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Cassiopeia321",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loving_Hut_in_Philadelphia.jpg"
+   }
+  },
+  {
+   "name": "Es Teler 77",
+   "aliases": [
+    "Es Teler"
+   ],
+   "wikidata": "Q5396630",
+   "description": "Indonesian fast food chain",
+   "descriptionId": "Restoran es teler legendaris Indonesia yang juga menyajikan aneka masakan Nusantara.",
+   "website": "https://www.esteler77.com/",
+   "category": "indonesian",
+   "osmPlaceCount": 6,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Genki Sushi",
+   "aliases": [],
+   "wikidata": "Q5533323",
+   "description": "Japanese sushi restaurant chain",
+   "descriptionId": "Jaringan sushi berjalan asal Jepang.",
+   "website": "https://www.genki-gdc.co.jp/",
+   "category": "japanese",
+   "osmPlaceCount": 6,
+   "logo": null,
+   "image": {
+    "file": "File:Genki Sushi concept store in apm 2016.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Genki_Sushi_concept_store_in_apm_2016.jpg/330px-Genki_Sushi_concept_store_in_apm_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Genki_Sushi_concept_store_in_apm_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Wpcpey",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Genki_Sushi_concept_store_in_apm_2016.jpg"
+   },
+   "wikidataLabel": "Genki Global Dining Concepts"
+  },
+  {
+   "name": "Kopi Lain Hati",
+   "aliases": [
+    "Lain Hati"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Kedai kopi lokal di berbagai kota Indonesia.",
+   "website": null,
+   "category": "coffee",
+   "osmPlaceCount": 6,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Biggby Coffee",
+   "aliases": [],
+   "wikidata": "Q4906876",
+   "description": "American coffee shop chain",
+   "descriptionId": "Jaringan kopi asal Michigan, Amerika Serikat.",
+   "website": "https://www.biggby.com/",
+   "category": "coffee",
+   "osmPlaceCount": 6,
+   "logo": {
+    "file": "File:Biggby Coffee logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Biggby_Coffee_logo.svg/330px-Biggby_Coffee_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Biggby_Coffee_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Biggby Coffee",
+    "credit": "https://www.biggby.com/wp-content/uploads/2016/12/FranBrochBook.pdf",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Biggby_Coffee_logo.svg"
+   },
+   "image": null
+  },
+  {
+   "name": "Häagen-Dazs",
+   "aliases": [
+    "Haagen-Dazs"
+   ],
+   "wikidata": "Q1143333",
+   "description": "American ice cream company",
+   "descriptionId": "Merek es krim premium asal Amerika Serikat.",
+   "website": "http://www.haagen-dazs.de/",
+   "category": "dessert",
+   "osmPlaceCount": 5,
+   "logo": {
+    "file": "File:Häagen-Dazs Logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/H%C3%A4agen-Dazs_Logo.svg/330px-H%C3%A4agen-Dazs_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/H%C3%A4agen-Dazs_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Häagen-Dazs",
+    "credit": "Own work using: franchise.haagen-dazs.global",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:H%C3%A4agen-Dazs_Logo.svg"
+   },
+   "image": {
+    "file": "File:Häagen-Dazs .jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/H%C3%A4agen-Dazs_.jpg/330px-H%C3%A4agen-Dazs_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/H%C3%A4agen-Dazs_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Gtx5841",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:H%C3%A4agen-Dazs_.jpg"
+   }
+  },
+  {
+   "name": "% Arabica",
+   "aliases": [
+    "Arabica",
+    "Percent Arabica"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Kedai kopi specialty asal Kyoto, Jepang, dengan desain minimalis.",
+   "website": null,
+   "category": "coffee",
+   "osmPlaceCount": 5,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Carl's Jr.",
+   "aliases": [
+    "Carls Jr"
+   ],
+   "wikidata": "Q1043486",
+   "description": "American fast food restaurant chain",
+   "descriptionId": "Jaringan restoran burger asal Amerika Serikat yang hadir di Indonesia.",
+   "website": "https://www.carlsjr.com",
+   "category": "fast-food",
+   "osmPlaceCount": 5,
+   "logo": {
+    "file": "File:Carl's Jr. logo (2022).svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Carl%27s_Jr._logo_%282022%29.svg/330px-Carl%27s_Jr._logo_%282022%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Carl%27s_Jr._logo_%282022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "CKE Restaraunts",
+    "credit": "This logo may be obtained from Carl's Jr.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carl%27s_Jr._logo_(2022).svg"
+   },
+   "image": {
+    "file": "File:Carlsjrsg.JPG",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Carlsjrsg.JPG/330px-Carlsjrsg.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Carlsjrsg.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "Terence Ong",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carlsjrsg.JPG"
+   }
+  },
+  {
+   "name": "Martabak Orins",
+   "aliases": [
+    "Orins",
+    "Martabak Pizza Orins"
+   ],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Gerai martabak dan martabak pizza modern lokal Indonesia.",
+   "website": null,
+   "category": "street-food",
+   "osmPlaceCount": 5,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Dum Dum",
+   "aliases": [
+    "Dum Dum Thai Drinks"
+   ],
+   "wikidata": "Q67901309",
+   "description": "Authentic thai drinks store chain",
+   "descriptionId": "Gerai minuman Thailand (thai tea) di Indonesia.",
+   "website": "http://www.dumdumthaidrinks.com",
+   "category": "beverages",
+   "osmPlaceCount": 5,
+   "logo": null,
+   "image": null,
+   "wikidataLabel": "Dum Dum Thai Drinks"
+  },
+  {
+   "name": "Pizza Marzano",
+   "aliases": [],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Restoran pizza bergaya Italia di Indonesia.",
+   "website": null,
+   "category": "western",
+   "osmPlaceCount": 5,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Dairy Queen",
+   "aliases": [
+    "DQ"
+   ],
+   "wikidata": "Q1141226",
+   "description": "American multinational fast food chain from Illinois",
+   "descriptionId": "Jaringan es krim soft-serve dan makanan cepat saji asal Amerika Serikat.",
+   "website": "https://www.dairyqueen.com/",
+   "category": "dessert",
+   "osmPlaceCount": 3,
+   "logo": {
+    "file": "File:Dairy Queen logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Dairy_Queen_logo.svg/330px-Dairy_Queen_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Dairy_Queen_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "International Dairy Queen",
+    "credit": "[1]",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dairy_Queen_logo.svg"
+   },
+   "image": {
+    "file": "File:Dairy Queen, Key West, FL.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Dairy_Queen%2C_Key_West%2C_FL.jpg/330px-Dairy_Queen%2C_Key_West%2C_FL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Dairy_Queen%2C_Key_West%2C_FL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "author": "Florida Keys--Public Libraries from Key West, Fla., USA",
+    "credit": "MM00021145 Uploaded by Florida Keys - Public Libraries",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dairy_Queen,_Key_West,_FL.jpg"
+   }
+  },
+  {
+   "name": "Kopi Soe",
+   "aliases": [],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Kedai kopi kekinian lokal Indonesia.",
+   "website": null,
+   "category": "coffee",
+   "osmPlaceCount": 3,
+   "logo": null,
+   "image": null
+  },
+  {
+   "name": "Hard Rock Cafe",
+   "aliases": [],
+   "wikidata": "Q918151",
+   "description": "American chain of restaurants",
+   "descriptionId": "Jaringan restoran bertema musik asal Amerika Serikat.",
+   "website": "https://cafe.hardrock.com/",
+   "category": "western",
+   "osmPlaceCount": 3,
+   "logo": {
+    "file": "File:Hard Rock Cafe Logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Hard_Rock_Cafe_Logo.svg/330px-Hard_Rock_Cafe_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Hard_Rock_Cafe_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "Alan Aldridge",
+    "credit": "SVG erzeugt mit AI",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hard_Rock_Cafe_Logo.svg"
+   },
+   "image": {
+    "file": "File:Hard Rock Cafe, New Delhi.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Hard_Rock_Cafe%2C_New_Delhi.jpg/330px-Hard_Rock_Cafe%2C_New_Delhi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Hard_Rock_Cafe%2C_New_Delhi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Qnaveedm",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hard_Rock_Cafe,_New_Delhi.jpg"
+   }
+  },
+  {
+   "name": "PappaRich",
+   "aliases": [
+    "Papparich"
+   ],
+   "wikidata": "Q95721282",
+   "description": "Malaysian style chain restaurant",
+   "descriptionId": "Jaringan restoran Malaysia dengan roti canai dan kopi putih.",
+   "website": "https://papparich.my/",
+   "category": "other",
+   "osmPlaceCount": 3,
+   "logo": {
+    "file": "File:PappaRich logo.png",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/PappaRich_logo.png/330px-PappaRich_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/PappaRich_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "PappaRich",
+    "credit": "https://papparich.com.my/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PappaRich_logo.png"
+   },
+   "image": null
+  },
+  {
+   "name": "BreadTalk",
+   "aliases": [
+    "Breadtalk"
+   ],
+   "wikidata": "Q1106640",
+   "description": "Singaporean multinational food and beverage corporation",
+   "descriptionId": "Jaringan toko roti asal Singapura dengan roti isi dan abon.",
+   "website": "https://www.breadtalk.com",
+   "category": "bakery",
+   "osmPlaceCount": 3,
+   "logo": {
+    "file": "File:BreadTalk logo.svg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/BreadTalk_logo.svg/330px-BreadTalk_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/BreadTalk_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "author": "BreadTalk",
+    "credit": "Extracted from Cake Brochure 2015, enlarged its size and converted to an SVG file",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BreadTalk_logo.svg"
+   },
+   "image": {
+    "file": "File:HK JD 佐敦 Jordan 彌敦道 Nathan Road JD Mall shop BreadTalk bakery March 2020 SS2 17.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/HK_JD_%E4%BD%90%E6%95%A6_Jordan_%E5%BD%8C%E6%95%A6%E9%81%93_Nathan_Road_JD_Mall_shop_BreadTalk_bakery_March_2020_SS2_17.jpg/330px-HK_JD_%E4%BD%90%E6%95%A6_Jordan_%E5%BD%8C%E6%95%A6%E9%81%93_Nathan_Road_JD_Mall_shop_BreadTalk_bakery_March_2020_SS2_17.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/59/HK_JD_%E4%BD%90%E6%95%A6_Jordan_%E5%BD%8C%E6%95%A6%E9%81%93_Nathan_Road_JD_Mall_shop_BreadTalk_bakery_March_2020_SS2_17.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Daivewoi Huongs",
+    "credit": "Own work",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:HK_JD_%E4%BD%90%E6%95%A6_Jordan_%E5%BD%8C%E6%95%A6%E9%81%93_Nathan_Road_JD_Mall_shop_BreadTalk_bakery_March_2020_SS2_17.jpg"
+   }
+  },
+  {
+   "name": "Bakmi Naga",
+   "aliases": [],
+   "wikidata": null,
+   "description": null,
+   "descriptionId": "Rumah makan bakmi Tionghoa dari Jakarta.",
+   "website": null,
+   "category": "chinese",
+   "osmPlaceCount": 2,
+   "logo": null,
+   "image": null,
+   "note": "known chain, below 3 OSM places in current data"
+  }
+ ]
+}

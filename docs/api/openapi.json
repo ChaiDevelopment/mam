@@ -1,0 +1,3157 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/auth/providers": {
+      "get": {
+        "operationId": "AuthController_providers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Which login methods are configured on this server",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/google/start": {
+      "get": {
+        "operationId": "AuthController_start",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Begin Google OAuth (web/admin). Redirects to Google.",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/google/callback": {
+      "get": {
+        "operationId": "AuthController_callback",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Google OAuth redirect target. Verifies state, PKCE and nonce, then sets session cookies.",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/nonce": {
+      "get": {
+        "operationId": "AuthController_nonce",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Issue a single-use nonce for native Google sign-in (valid 5 minutes)",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/google": {
+      "post": {
+        "operationId": "AuthController_googleNative",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idToken": {
+                    "type": "string",
+                    "minLength": 20,
+                    "maxLength": 4096
+                  },
+                  "nonce": {
+                    "type": "string",
+                    "minLength": 16,
+                    "maxLength": 256
+                  }
+                },
+                "required": [
+                  "idToken",
+                  "nonce"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Exchange a Google ID token (Android) for MAM! tokens",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "AuthController_refresh",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refreshToken": {
+                    "type": "string",
+                    "minLength": 20,
+                    "maxLength": 512
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Rotate refresh token. Web: cookie. Android: refreshToken in body.",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Revoke the current session",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/logout-all": {
+      "post": {
+        "operationId": "AuthController_logoutAll",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Revoke every session of the current user",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Current authenticated user",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/dev-login": {
+      "post": {
+        "operationId": "AuthController_devLogin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "DEVELOPMENT ONLY: log in without Google. Disabled unless DEV_LOGIN_ENABLED=true and NODE_ENV!=production.",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/users/me": {
+      "get": {
+        "operationId": "UsersController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "users"
+        ]
+      },
+      "patch": {
+        "operationId": "UsersController_updateMe",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 30,
+                    "pattern": "^[a-z0-9_.]+$"
+                  },
+                  "displayName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "bio": {
+                    "type": "string",
+                    "maxLength": 280,
+                    "nullable": true
+                  },
+                  "locationVisibility": {
+                    "type": "string",
+                    "enum": [
+                      "PUBLIC",
+                      "CITY_ONLY",
+                      "HIDDEN"
+                    ]
+                  },
+                  "preferences": {
+                    "type": "object",
+                    "properties": {
+                      "defaultRadiusMeters": {
+                        "type": "integer"
+                      },
+                      "preferredCategories": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "indonesian",
+                            "japanese",
+                            "korean",
+                            "chinese",
+                            "western",
+                            "fast-food",
+                            "street-food",
+                            "seafood",
+                            "bakery",
+                            "dessert",
+                            "coffee",
+                            "beverages",
+                            "vegetarian",
+                            "other"
+                          ]
+                        },
+                        "maxItems": 14
+                      },
+                      "budget": {
+                        "type": "string",
+                        "enum": [
+                          "UNDER_10K",
+                          "10K_20K",
+                          "20K_30K",
+                          "30K_50K",
+                          "ABOVE_50K"
+                        ],
+                        "nullable": true
+                      },
+                      "saveSearchHistory": {
+                        "type": "boolean"
+                      },
+                      "notificationsEnabled": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "users"
+        ]
+      },
+      "delete": {
+        "operationId": "UsersController_deleteMe",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "confirm": {
+                    "type": "string",
+                    "enum": [
+                      "HAPUS AKUN SAYA"
+                    ]
+                  }
+                },
+                "required": [
+                  "confirm"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Permanently delete (anonymize) the account. Body: {\"confirm\":\"HAPUS AKUN SAYA\"}",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/api/v1/users/me/search-history": {
+      "get": {
+        "operationId": "UsersController_history",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "users"
+        ]
+      },
+      "delete": {
+        "operationId": "UsersController_clearHistory",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "operationId": "UsersController_profile",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Public profile by user ID or username",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/api/v1/users/{id}/reviews": {
+      "get": {
+        "operationId": "UsersController_userReviews",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/api/v1/uploads/review-photo": {
+      "post": {
+        "operationId": "UploadsController_upload",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "uploads"
+        ]
+      }
+    },
+    "/api/v1/uploads/{id}": {
+      "delete": {
+        "operationId": "UploadsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "uploads"
+        ]
+      }
+    },
+    "/api/v1/uploads/files/{key}": {
+      "get": {
+        "operationId": "UploadsController_file",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "uploads"
+        ]
+      }
+    },
+    "/api/v1/reviews": {
+      "post": {
+        "operationId": "ReviewsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "restaurantId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "googlePlaceId": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 300,
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  },
+                  "ratings": {
+                    "type": "object",
+                    "properties": {
+                      "taste": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "price": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "portion": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "cleanliness": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "service": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      }
+                    },
+                    "required": [
+                      "taste",
+                      "price",
+                      "portion",
+                      "cleanliness",
+                      "service"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 3000
+                  },
+                  "pricePaid": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10000000,
+                    "nullable": true
+                  },
+                  "visitType": {
+                    "type": "string",
+                    "enum": [
+                      "DINE_IN",
+                      "TAKEAWAY",
+                      "DELIVERY"
+                    ]
+                  },
+                  "visitedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "nullable": true
+                  },
+                  "photoIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "maxItems": 6
+                  }
+                },
+                "required": [
+                  "ratings",
+                  "text",
+                  "visitType"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Create a review. One review per user per restaurant (409 if one exists — edit it instead).",
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      }
+    },
+    "/api/v1/reviews/feed": {
+      "get": {
+        "operationId": "ReviewsController_feed",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "scope",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "latest",
+                "nearby"
+              ],
+              "default": "latest"
+            }
+          },
+          {
+            "name": "lat",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "radius",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      }
+    },
+    "/api/v1/reviews/{id}": {
+      "get": {
+        "operationId": "ReviewsController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      },
+      "patch": {
+        "operationId": "ReviewsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ratings": {
+                    "type": "object",
+                    "properties": {
+                      "taste": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "price": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "portion": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "cleanliness": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "service": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      }
+                    },
+                    "required": [
+                      "taste",
+                      "price",
+                      "portion",
+                      "cleanliness",
+                      "service"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 3000
+                  },
+                  "pricePaid": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10000000,
+                    "nullable": true
+                  },
+                  "visitType": {
+                    "type": "string",
+                    "enum": [
+                      "DINE_IN",
+                      "TAKEAWAY",
+                      "DELIVERY"
+                    ]
+                  },
+                  "visitedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "nullable": true
+                  },
+                  "photoIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "maxItems": 6
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Edit own review (updates the same record).",
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      },
+      "delete": {
+        "operationId": "ReviewsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      }
+    },
+    "/api/v1/reviews/{id}/reactions": {
+      "post": {
+        "operationId": "ReviewsController_react",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "HELPFUL",
+                      "YUMMY",
+                      "FUNNY"
+                    ]
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      }
+    },
+    "/api/v1/reviews/{id}/reactions/{type}": {
+      "delete": {
+        "operationId": "ReviewsController_unreact",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      }
+    },
+    "/api/v1/reviews/{id}/report": {
+      "post": {
+        "operationId": "ReviewsController_report",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "SPAM",
+                      "OFFENSIVE",
+                      "FAKE_REVIEW",
+                      "IRRELEVANT",
+                      "PRIVACY",
+                      "OTHER"
+                    ]
+                  },
+                  "details": {
+                    "type": "string",
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "reviews (MAM! community)"
+        ]
+      }
+    },
+    "/api/v1/categories": {
+      "get": {
+        "operationId": "CategoriesController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "categories"
+        ]
+      }
+    },
+    "/api/v1/home": {
+      "get": {
+        "operationId": "CommunityController_home",
+        "parameters": [
+          {
+            "name": "lat",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "radius",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "community"
+        ]
+      }
+    },
+    "/api/v1/community/leaderboard": {
+      "get": {
+        "operationId": "CommunityController_leaderboard",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "community"
+        ]
+      }
+    },
+    "/api/v1/notifications": {
+      "get": {
+        "operationId": "NotificationsController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "notifications"
+        ]
+      }
+    },
+    "/api/v1/notifications/{id}/read": {
+      "patch": {
+        "operationId": "NotificationsController_read",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "notifications"
+        ]
+      }
+    },
+    "/api/v1/notifications/read-all": {
+      "post": {
+        "operationId": "NotificationsController_readAll",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "notifications"
+        ]
+      }
+    },
+    "/api/v1/places": {
+      "post": {
+        "operationId": "PlacesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 120
+                  },
+                  "lat": {
+                    "type": "number",
+                    "minimum": -11.2,
+                    "maximum": 6.1
+                  },
+                  "lng": {
+                    "type": "number",
+                    "minimum": 94.9,
+                    "maximum": 141.05
+                  },
+                  "address": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "nullable": true
+                  },
+                  "city": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "indonesian",
+                        "japanese",
+                        "korean",
+                        "chinese",
+                        "western",
+                        "fast-food",
+                        "street-food",
+                        "seafood",
+                        "bakery",
+                        "dessert",
+                        "coffee",
+                        "beverages",
+                        "vegetarian",
+                        "other"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 3
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 30,
+                    "pattern": "^[0-9+()\\s-]*$",
+                    "nullable": true
+                  },
+                  "website": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "nullable": true
+                  },
+                  "openingHours": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "name",
+                  "lat",
+                  "lng",
+                  "categories"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Add a food place missing from OpenStreetMap/Google (logged-in users). 409 when a similar place exists within 75 m.",
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/nearby": {
+      "get": {
+        "operationId": "PlacesController_nearby",
+        "parameters": [
+          {
+            "name": "lat",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "radius",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 5000
+            }
+          },
+          {
+            "name": "categories",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "indonesian",
+                  "japanese",
+                  "korean",
+                  "chinese",
+                  "western",
+                  "fast-food",
+                  "street-food",
+                  "seafood",
+                  "bakery",
+                  "dessert",
+                  "coffee",
+                  "beverages",
+                  "vegetarian",
+                  "other"
+                ]
+              },
+              "maxItems": 14
+            }
+          },
+          {
+            "name": "budget",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "UNDER_10K",
+                "10K_20K",
+                "20K_30K",
+                "30K_50K",
+                "ABOVE_50K"
+              ]
+            }
+          },
+          {
+            "name": "minRating",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NEAREST",
+                "COMMUNITY_RATING",
+                "MOST_REVIEWED",
+                "RECENTLY_REVIEWED"
+              ],
+              "default": "NEAREST"
+            }
+          },
+          {
+            "name": "openNow",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Nearby food places (default radius 5000 m). OpenStreetMap + community places, merged with Google results when configured.",
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/search": {
+      "get": {
+        "operationId": "PlacesController_search",
+        "parameters": [
+          {
+            "name": "q",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 120
+            }
+          },
+          {
+            "name": "lat",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "radius",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/autocomplete": {
+      "get": {
+        "operationId": "PlacesController_autocomplete",
+        "parameters": [
+          {
+            "name": "input",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            }
+          },
+          {
+            "name": "lat",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "sessionToken",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "kind",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "food",
+                "geocode"
+              ],
+              "default": "food"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/surprise": {
+      "get": {
+        "operationId": "PlacesController_surprise",
+        "parameters": [
+          {
+            "name": "lat",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "radius",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 5000
+            }
+          },
+          {
+            "name": "categories",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "indonesian",
+                  "japanese",
+                  "korean",
+                  "chinese",
+                  "western",
+                  "fast-food",
+                  "street-food",
+                  "seafood",
+                  "bakery",
+                  "dessert",
+                  "coffee",
+                  "beverages",
+                  "vegetarian",
+                  "other"
+                ]
+              },
+              "maxItems": 14
+            }
+          },
+          {
+            "name": "budget",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "UNDER_10K",
+                "10K_20K",
+                "20K_30K",
+                "30K_50K",
+                "ABOVE_50K"
+              ]
+            }
+          },
+          {
+            "name": "minCommunityRating",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          {
+            "name": "openNow",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "excludePlaceIds",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 300,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "maxItems": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Surprise me: a randomized but relevant pick inside the radius, with reasons.",
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/photo": {
+      "get": {
+        "operationId": "PlacesController_photo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Redirects to a short-lived Google photo URL. Photos are never stored by MAM!.",
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/{placeId}/location": {
+      "get": {
+        "operationId": "PlacesController_location",
+        "parameters": [
+          {
+            "name": "placeId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/{placeId}/external-reviews": {
+      "get": {
+        "operationId": "PlacesController_externalReviews",
+        "parameters": [
+          {
+            "name": "placeId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Google review excerpts (max 5, as provided by Google) with author attribution.",
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/places/{placeId}": {
+      "get": {
+        "operationId": "PlacesController_detail",
+        "parameters": [
+          {
+            "name": "placeId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lat",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lng",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "places (OpenStreetMap + community; Google Maps when configured)"
+        ]
+      }
+    },
+    "/api/v1/restaurants/resolve": {
+      "post": {
+        "operationId": "RestaurantsController_resolve",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "googlePlaceId": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 300,
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  }
+                },
+                "required": [
+                  "googlePlaceId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Get or create the internal MAM! restaurant UUID for a Google Place ID.",
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}": {
+      "get": {
+        "operationId": "RestaurantsController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}/reviews": {
+      "get": {
+        "operationId": "RestaurantsController_reviewsFor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "recent",
+                "helpful",
+                "highest",
+                "lowest"
+              ],
+              "default": "recent"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}/statistics": {
+      "get": {
+        "operationId": "RestaurantsController_statistics",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}/my-review": {
+      "get": {
+        "operationId": "RestaurantsController_myReview",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      }
+    },
+    "/api/v1/restaurants/{id}/platform-links": {
+      "get": {
+        "operationId": "RestaurantsController_platformLinks",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Delivery platform links with source and verification status. Never fabricated.",
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      },
+      "post": {
+        "operationId": "RestaurantsController_submitLink",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "GOFOOD",
+                      "GRABFOOD",
+                      "SHOPEEFOOD"
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "provider",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "restaurants (MAM! references)"
+        ]
+      }
+    },
+    "/api/v1/collections": {
+      "get": {
+        "operationId": "CollectionsController_mine",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      },
+      "post": {
+        "operationId": "CollectionsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 280,
+                    "nullable": true
+                  },
+                  "isPublic": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      }
+    },
+    "/api/v1/collections/{id}": {
+      "get": {
+        "operationId": "CollectionsController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      },
+      "patch": {
+        "operationId": "CollectionsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 280,
+                    "nullable": true
+                  },
+                  "isPublic": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      },
+      "delete": {
+        "operationId": "CollectionsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      }
+    },
+    "/api/v1/collections/{id}/items": {
+      "post": {
+        "operationId": "CollectionsController_addItem",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "restaurantId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "googlePlaceId": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 300,
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      }
+    },
+    "/api/v1/collections/{id}/items/{itemId}": {
+      "delete": {
+        "operationId": "CollectionsController_removeItem",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "itemId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "collections"
+        ]
+      }
+    },
+    "/api/v1/favorites": {
+      "get": {
+        "operationId": "FavoritesController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "favorites"
+        ]
+      }
+    },
+    "/api/v1/favorites/{restaurantId}": {
+      "get": {
+        "operationId": "FavoritesController_status",
+        "parameters": [
+          {
+            "name": "restaurantId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "favorites"
+        ]
+      },
+      "post": {
+        "operationId": "FavoritesController_add",
+        "parameters": [
+          {
+            "name": "restaurantId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "favorites"
+        ]
+      },
+      "delete": {
+        "operationId": "FavoritesController_remove",
+        "parameters": [
+          {
+            "name": "restaurantId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "favorites"
+        ]
+      }
+    },
+    "/api/v1/admin/overview": {
+      "get": {
+        "operationId": "AdminController_overview",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "operationId": "AdminController_users",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "role",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "USER",
+                "MODERATOR",
+                "ADMIN",
+                "SUPER_ADMIN"
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "SUSPENDED",
+                "DELETED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{id}": {
+      "get": {
+        "operationId": "AdminController_user",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      },
+      "patch": {
+        "operationId": "AdminController_updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ACTIVE",
+                      "SUSPENDED"
+                    ]
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "USER",
+                      "MODERATOR",
+                      "ADMIN",
+                      "SUPER_ADMIN"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Suspend/restore or change role. Requires ADMIN; hierarchy rules enforced.",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/reports": {
+      "get": {
+        "operationId": "AdminController_reports",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OPEN",
+                "RESOLVED_ACTION_TAKEN",
+                "RESOLVED_NO_ACTION",
+                "DISMISSED"
+              ],
+              "default": "OPEN"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/reports/{id}": {
+      "patch": {
+        "operationId": "AdminController_resolveReport",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "RESOLVED_ACTION_TAKEN",
+                      "RESOLVED_NO_ACTION",
+                      "DISMISSED"
+                    ]
+                  },
+                  "reviewAction": {
+                    "type": "string",
+                    "enum": [
+                      "HIDE",
+                      "REJECT",
+                      "RESTORE",
+                      "PUBLISH",
+                      "DELETE"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "status",
+                  "note"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/reviews": {
+      "get": {
+        "operationId": "AdminController_reviews",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PENDING",
+                "PUBLISHED",
+                "HIDDEN",
+                "REJECTED",
+                "DELETED"
+              ]
+            }
+          },
+          {
+            "name": "q",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/reviews/{id}/moderate": {
+      "post": {
+        "operationId": "AdminController_moderate",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "HIDE",
+                      "REJECT",
+                      "RESTORE",
+                      "PUBLISH",
+                      "DELETE"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 1000
+                  }
+                },
+                "required": [
+                  "action",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/restaurants": {
+      "get": {
+        "operationId": "AdminController_restaurants",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "MERGED",
+                "CLOSED",
+                "HIDDEN"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/restaurants/duplicates": {
+      "get": {
+        "operationId": "AdminController_duplicates",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/restaurants/{id}": {
+      "patch": {
+        "operationId": "AdminController_updateRestaurant",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ACTIVE",
+                      "CLOSED",
+                      "HIDDEN"
+                    ]
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "indonesian",
+                        "japanese",
+                        "korean",
+                        "chinese",
+                        "western",
+                        "fast-food",
+                        "street-food",
+                        "seafood",
+                        "bakery",
+                        "dessert",
+                        "coffee",
+                        "beverages",
+                        "vegetarian",
+                        "other"
+                      ]
+                    },
+                    "maxItems": 5
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/restaurants/{id}/merge": {
+      "post": {
+        "operationId": "AdminController_merge",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "targetRestaurantId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "targetRestaurantId",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/restaurants/{id}/platform-links": {
+      "put": {
+        "operationId": "AdminController_platformLink",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "GOFOOD",
+                      "GRABFOOD",
+                      "SHOPEEFOOD"
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 500,
+                    "nullable": true
+                  },
+                  "availability": {
+                    "type": "string",
+                    "enum": [
+                      "VERIFIED",
+                      "UNAVAILABLE"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "provider",
+                  "url",
+                  "availability",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/categories": {
+      "get": {
+        "operationId": "AdminController_categories",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/categories/{id}": {
+      "patch": {
+        "operationId": "AdminController_updateCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nameId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "nameEn": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "emoji": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "sortOrder": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000
+                  },
+                  "isActive": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/audit-logs": {
+      "get": {
+        "operationId": "AdminController_audit",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "action",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "actorId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/config": {
+      "get": {
+        "operationId": "AdminController_config",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      },
+      "patch": {
+        "operationId": "AdminController_updateConfig",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "defaultRadiusMeters": {
+                    "type": "integer"
+                  },
+                  "reviewMinTextLength": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 500
+                  },
+                  "reviewsRequireApproval": {
+                    "type": "boolean"
+                  },
+                  "maxReviewsPerDay": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/integrations": {
+      "get": {
+        "operationId": "AdminController_integrations",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/integrations/check": {
+      "post": {
+        "operationId": "AdminController_check",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/admin/storage": {
+      "get": {
+        "operationId": "AdminController_storage",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "operationId": "HealthController_live",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/api/v1/health/ready": {
+      "get": {
+        "operationId": "HealthController_ready",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/api/v1/health/metrics": {
+      "get": {
+        "operationId": "HealthController_metricsText",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "health"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "MAM! API",
+    "description": "MAM! — Discover. Review. Eat. REST API v1.\n\nAuthentication: web/admin use httpOnly cookies + X-CSRF-Token (double submit); Android uses Bearer tokens.\nGoogle Maps content is fetched live and never stored (only Place IDs, and coordinates for ≤ 30 days).",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      },
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "mam_at"
+      }
+    },
+    "schemas": {}
+  }
+}

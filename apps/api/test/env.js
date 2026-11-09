@@ -1,0 +1,17 @@
+const os = require('os');
+const path = require('path');
+process.env.NODE_ENV = 'test';
+process.env.DATABASE_URL = process.env.TEST_DATABASE_URL || 'postgresql://postgres@localhost:5433/mam_itest?schema=public';
+process.env.JWT_ACCESS_SECRET = 'integration-test-access-secret-0123456789abcdef';
+process.env.COOKIE_SECRET = 'integration-test-cookie-secret-0123456789abcdef';
+process.env.DEV_LOGIN_ENABLED = 'true';
+process.env.STORAGE_DRIVER = 'local';
+process.env.STORAGE_LOCAL_DIR = path.join(os.tmpdir(), `mam-itest-storage-${process.pid}`);
+process.env.MAIL_OUTBOX_DIR = path.join(os.tmpdir(), `mam-itest-outbox-${process.pid}`);
+delete process.env.SMTP_USER;
+delete process.env.SMTP_PASS;
+process.env.MAX_REVIEWS_PER_DAY = '10';
+delete process.env.REDIS_URL;
+delete process.env.GOOGLE_MAPS_SERVER_API_KEY;
+delete process.env.GOOGLE_OAUTH_CLIENT_ID;
+delete process.env.GOOGLE_OAUTH_CLIENT_SECRET;

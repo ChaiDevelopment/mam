@@ -1,0 +1,14 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "infrastructure/docker/api.Dockerfile"
+  },
+  "deploy": {
+    "preDeployCommand": ["npx prisma migrate deploy && node dist-seed/prisma/seed.js"],
+    "healthcheckPath": "/api/v1/health",
+    "healthcheckTimeout": 120,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 5
+  }
+}

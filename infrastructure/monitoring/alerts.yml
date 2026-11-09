@@ -1,0 +1,25 @@
+groups:
+  - name: mam-api
+    rules:
+      - alert: MamApiHighErrorRate
+        expr: sum(rate(mam_http_request_duration_ms_count{status="5xx"}[5m])) / sum(rate(mam_http_request_duration_ms_count[5m])) > 0.02
+        for: 10m
+        labels: { severity: critical }
+        annotations: { summary: 'API 5xx rate above 2% for 10 minutes' }
+
+      - alert: MamApiSlow
+        expr: histogram_quantile(0.95, sum by (le) (rate(mam_http_request_duration_ms_bucket[5m]))) > 1000
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: 'API p95 latency above 1 s' }
+
+      - alert: MamGooglePlacesFailing
+        expr: sum(rate(mam_external_requests_total{provider="GOOGLE",outcome="error"}[10m])) / sum(rate(mam_external_requests_total{provider="GOOGLE"}[10m])) > 0.2
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: 'More than 20% of Google Places calls failing — users see community-only fallback' }
+
+      - alert: MamUploadFailures
+        expr: sum(increase(mam_upload_failures_total{reason="storage"}[15m])) > 5
+        labels: { severity: warning }
+        annotations: { summary: 'Photo uploads failing at the storage layer' }

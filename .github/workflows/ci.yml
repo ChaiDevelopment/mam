@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '22'
+  NEXT_TELEMETRY_DISABLED: '1'
+
+jobs:
+  lint-typecheck:
+    name: Lint & type checking
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build:packages
+      - run: npx prisma generate
+        working-directory: apps/api
+      - run: npm run lint
+      - run: npm run typecheck
+      - name: Prettier check
+        run: npx prettier --check "packages/*/src/**/*.ts" || echo "::warning::Formatting differences found"
+
+  backend:
+    name: Backend tests (unit + integration on PostGIS)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgis/postgis:17-3.5
+        env: { POSTGRES_USER: mam, POSTGRES_PASSWORD: mam, POSTGRES_DB: mam_itest }
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U mam" --health-interval 5s --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql://mam:mam@localhost:5432/mam_itest?schema=public
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build:packages
+      - run: npx prisma generate
+        working-directory: apps/api
+      - name: Migration drift check
+        working-directory: apps/api
+        run: npx prisma migrate diff --from-migrations prisma/migrations --to-schema-datamodel prisma/schema.prisma --shadow-database-url "$TEST_DATABASE_URL" --exit-code
+      - run: npx jest --config jest.config.js --selectProjects unit --ci
+        working-directory: apps/api
+      - run: npx jest --config jest.config.js --selectProjects integration --runInBand --ci
+        working-directory: apps/api
+
+  web:
+    name: Web & admin tests (component + E2E)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgis/postgis:17-3.5
+        env: { POSTGRES_USER: mam, POSTGRES_PASSWORD: mam, POSTGRES_DB: mam_e2e }
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U mam" --health-interval 5s --health-retries 20
+    env:
+      E2E_DATABASE_URL: postgresql://mam:mam@localhost:5432/mam_e2e?schema=public
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build:packages
+      - run: npx vitest run
+        working-directory: apps/web
+      - run: npx vitest run
+        working-directory: apps/admin
+      - name: Build API + web for E2E
+        run: npm run build -w @mam/api && npm run build -w @mam/web
+      - run: npx playwright install --with-deps chromium
+        working-directory: apps/web
+      - run: npx playwright test
+        working-directory: apps/web
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: playwright-report, path: apps/web/playwright-report, retention-days: 7 }
+
+  android:
+    name: Android unit tests & debug build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
+      - run: ./gradlew testDebugUnitTest assembleDebug assembleDebugAndroidTest --console=plain
+      - uses: actions/upload-artifact@v4
+        with: { name: app-debug.apk, path: apps/android/app/build/outputs/apk/debug/*.apk, retention-days: 7 }
+
+  build:
+    name: Production build verification
+    runs-on: ubuntu-latest
+    needs: [lint-typecheck]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Docker images build
+        run: |
+          docker build -f infrastructure/docker/api.Dockerfile -t mam-api:ci .
+          docker build -f infrastructure/docker/next.Dockerfile --build-arg APP=web -t mam-web:ci .
+          docker build -f infrastructure/docker/next.Dockerfile --build-arg APP=admin -t mam-admin:ci .

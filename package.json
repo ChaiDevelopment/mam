@@ -1,0 +1,32 @@
+{
+  "name": "mam",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MAM! — Discover. Review. Eat. Location-based food discovery and review community.",
+  "workspaces": [
+    "packages/*",
+    "apps/api",
+    "apps/web",
+    "apps/admin"
+  ],
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "build:packages": "npm run build -w @mam/design-tokens -w @mam/shared-types -w @mam/validation -w @mam/api-client",
+    "build": "npm run build:packages && npm run build -w @mam/api && npm run build -w @mam/web && npm run build -w @mam/admin",
+    "dev:api": "npm run start:dev -w @mam/api",
+    "dev:web": "npm run dev -w @mam/web",
+    "dev:admin": "npm run dev -w @mam/admin",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "db:migrate": "npm run prisma:migrate:deploy -w @mam/api",
+    "db:seed": "npm run prisma:seed -w @mam/api",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "~5.6.3"
+  }
+}

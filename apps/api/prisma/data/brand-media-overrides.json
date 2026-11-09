@@ -1,0 +1,6 @@
+{
+  "_doc": "Manual review of logos/photos fetched from official sites (scripts/fetch-brand-logos.ts). false = never use that media for the brand.",
+  "Maxx Coffee": { "logo": false },
+  "Es Teler 77": { "photo": false },
+  "Janji Jiwa": { "photo": false }
+}

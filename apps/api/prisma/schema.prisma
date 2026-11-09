@@ -1,0 +1,760 @@
+// MAM! database schema — PostgreSQL 16+/17 with PostGIS.
+// Naming: Prisma models are PascalCase, tables/columns are snake_case via @@map/@map.
+// Google Maps compliance: only Place IDs are persisted indefinitely (external_place_refs).
+// Restaurant coordinates obtained from Google are cached ≤ 30 days (location_cached_at) and
+// purged by the scheduled RetentionService. No other Google Places content is stored.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+  binaryTargets   = ["native", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis, citext, pgcrypto]
+}
+
+// ───────────────────────────── Enums ─────────────────────────────
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum LocationVisibility {
+  PUBLIC
+  CITY_ONLY
+  HIDDEN
+}
+
+enum SessionClient {
+  WEB
+  ADMIN
+  ANDROID
+}
+
+enum RestaurantStatus {
+  ACTIVE
+  MERGED
+  CLOSED
+  HIDDEN
+  /// Community submission waiting for a moderator (not shown in discovery).
+  PENDING
+  /// Community submission rejected by a moderator (reason in moderation_note, user notified by email).
+  REJECTED
+}
+
+enum NameSource {
+  COMMUNITY
+  ADMIN
+  OSM
+  NONE
+}
+
+/// Where a restaurant record (and its stored facts) comes from.
+enum PlaceSource {
+  /// Referenced Google place: only the Place ID is stored; coordinates cached ≤30 days.
+  GOOGLE
+  /// Imported from OpenStreetMap (ODbL) — facts may be stored; attribution required.
+  OSM
+  /// Added by a MAM! user or admin.
+  COMMUNITY
+}
+
+enum Provider {
+  GOOGLE
+  OSM
+  GOFOOD
+  GRABFOOD
+  SHOPEEFOOD
+  MANUAL
+}
+
+enum CategorySource {
+  GOOGLE_TYPE
+  OSM_TAG
+  COMMUNITY
+  ADMIN
+}
+
+enum ReviewStatus {
+  PENDING
+  PUBLISHED
+  HIDDEN
+  REJECTED
+  DELETED
+}
+
+enum VisitType {
+  DINE_IN
+  TAKEAWAY
+  DELIVERY
+}
+
+enum ReactionType {
+  HELPFUL
+  YUMMY
+  FUNNY
+}
+
+enum ReportReason {
+  SPAM
+  OFFENSIVE
+  FAKE_REVIEW
+  IRRELEVANT
+  PRIVACY
+  OTHER
+}
+
+enum ReportStatus {
+  OPEN
+  RESOLVED_ACTION_TAKEN
+  RESOLVED_NO_ACTION
+  DISMISSED
+}
+
+enum ModerationActionType {
+  HIDE
+  REJECT
+  RESTORE
+  PUBLISH
+  DELETE
+}
+
+enum NotificationType {
+  REVIEW_REACTION
+  REVIEW_MODERATED
+  BADGE_EARNED
+  REPORT_RESOLVED
+  SYSTEM
+  PLACE_APPROVED
+  PLACE_REJECTED
+}
+
+enum BadgeCode {
+  FIRST_BITE
+  FOOD_EXPLORER
+  HIDDEN_GEM_HUNTER
+  REVIEW_MASTER
+  LOCAL_FOODIE
+  PHOTO_HUNTER
+}
+
+enum PlatformAvailability {
+  VERIFIED
+  UNVERIFIED
+  UNAVAILABLE
+  NOT_INTEGRATED
+}
+
+enum PlatformLinkSource {
+  PROVIDER_API
+  ADMIN_VERIFIED
+  USER_SUBMITTED
+}
+
+// ───────────────────────────── Identity ─────────────────────────────
+model User {
+  id                String     @id @default(uuid()) @db.Uuid
+  email             String     @unique @db.Citext
+  emailVerified     Boolean    @default(false) @map("email_verified")
+  status            UserStatus @default(ACTIVE)
+  role              Role       @default(USER)
+  /// scrypt hash (`scrypt$N$r$p$salt$hash`) for email + password login. NULL = no password set (Google-only).
+  passwordHash      String?    @map("password_hash") @db.VarChar(200)
+  passwordUpdatedAt DateTime?  @map("password_updated_at") @db.Timestamptz(3)
+  lastActiveAt      DateTime?  @map("last_active_at") @db.Timestamptz(3)
+  createdAt         DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt         DateTime   @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deletedAt         DateTime?  @map("deleted_at") @db.Timestamptz(3)
+
+  profile                UserProfile?
+  preferences            UserPreference?
+  oauthAccounts          OAuthAccount[]
+  sessions               Session[]
+  emailTokens            EmailToken[]
+  reviews                Review[]
+  reviewPhotos           ReviewPhoto[]
+  reactions              ReviewReaction[]
+  reports                ReviewReport[]     @relation("ReportReporter")
+  resolvedReports        ReviewReport[]     @relation("ReportResolver")
+  collections            Collection[]
+  favorites              Favorite[]
+  badges                 UserBadge[]
+  notifications          Notification[]
+  auditLogs              AdminAuditLog[]
+  searchHistory          SearchHistory[]
+  moderationAction       ModerationAction[]
+  createdRestaurants     Restaurant[]
+  platformLinksSubmitted PlatformLink[]     @relation("PlatformLinkSubmitter")
+  platformLinksVerified  PlatformLink[]     @relation("PlatformLinkVerifier")
+  configChanges          AppConfig[]
+
+  @@index([status, role])
+  @@index([createdAt])
+  @@map("users")
+}
+
+model UserProfile {
+  id                 String             @id @default(uuid()) @db.Uuid
+  userId             String             @unique @map("user_id") @db.Uuid
+  username           String             @unique @db.Citext
+  displayName        String             @map("display_name") @db.VarChar(60)
+  avatarUrl          String?            @map("avatar_url") @db.VarChar(500)
+  bio                String?            @db.VarChar(280)
+  locationVisibility LocationVisibility @default(HIDDEN) @map("location_visibility")
+  createdAt          DateTime           @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt          DateTime           @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([displayName])
+  @@map("user_profiles")
+}
+
+/// Links a MAM! account to an identity provider. OAuth access/refresh tokens are NOT stored:
+/// MAM! only needs the verified identity, not delegated Google API access.
+model OAuthAccount {
+  id                String   @id @default(uuid()) @db.Uuid
+  userId            String   @map("user_id") @db.Uuid
+  provider          String   @db.VarChar(32)
+  providerAccountId String   @map("provider_account_id") @db.VarChar(255)
+  email             String?  @db.Citext
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt         DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("oauth_accounts")
+}
+
+/// Refresh-token sessions. Only a SHA-256 hash of the refresh token is stored; tokens rotate on use.
+model Session {
+  id               String        @id @default(uuid()) @db.Uuid
+  userId           String        @map("user_id") @db.Uuid
+  refreshTokenHash String        @unique @map("refresh_token_hash") @db.Char(64)
+  client           SessionClient
+  userAgent        String?       @map("user_agent") @db.VarChar(400)
+  ip               String?       @db.VarChar(64)
+  expiresAt        DateTime      @map("expires_at") @db.Timestamptz(3)
+  revokedAt        DateTime?     @map("revoked_at") @db.Timestamptz(3)
+  lastUsedAt       DateTime?     @map("last_used_at") @db.Timestamptz(3)
+  familyId         String        @map("family_id") @db.Uuid
+  createdAt        DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, revokedAt])
+  @@index([familyId])
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+model UserPreference {
+  id                   String   @id @default(uuid()) @db.Uuid
+  userId               String   @unique @map("user_id") @db.Uuid
+  defaultRadiusMeters  Int      @default(5000) @map("default_radius_meters")
+  preferredCategories  String[] @default([]) @map("preferred_categories")
+  budget               String?  @db.VarChar(16)
+  saveSearchHistory    Boolean  @default(true) @map("save_search_history")
+  notificationsEnabled Boolean  @default(true) @map("notifications_enabled")
+  createdAt            DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt            DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
+}
+
+// ───────────────────────────── Restaurants ─────────────────────────────
+/// Internal MAM! restaurant reference. Never interchangeable with a Google Place ID.
+model Restaurant {
+  id               String                                 @id @default(uuid()) @db.Uuid
+  status           RestaurantStatus                       @default(ACTIVE)
+  /// Only community/admin supplied names are stored. Google names are fetched live and never persisted.
+  name             String?                                @db.VarChar(120)
+  nameSource       NameSource                             @default(NONE) @map("name_source")
+  source           PlaceSource                            @default(GOOGLE)
+  /// Stored only for OSM/COMMUNITY places (never Google content).
+  address          String?                                @db.VarChar(300)
+  phone            String?                                @db.VarChar(60)
+  website          String?                                @db.VarChar(300)
+  /// OSM opening_hours syntax or free text from the community.
+  openingHours     String?                                @map("opening_hours") @db.VarChar(500)
+  /// Raw cuisine tags (OSM `cuisine`, `;`-separated), e.g. "padang;indonesian".
+  cuisine          String?                                @db.VarChar(200)
+  /// OSM amenity/shop kind, e.g. restaurant, cafe, fast_food, bakery.
+  placeKind        String?                                @map("place_kind") @db.VarChar(40)
+  /// Province/city labels for display and filtering (OSM addr:* tags or community input).
+  city             String?                                @db.VarChar(120)
+  province         String?                                @db.VarChar(120)
+  sourceUpdatedAt  DateTime?                              @map("source_updated_at") @db.Timestamptz(3)
+  /// Moderation of community submissions (PENDING -> ACTIVE / REJECTED).
+  reviewedById     String?                                @map("reviewed_by") @db.Uuid
+  reviewedAt       DateTime?                              @map("reviewed_at") @db.Timestamptz(3)
+  moderationNote   String?                                @map("moderation_note") @db.VarChar(500)
+  /// Brand of a chain outlet (OSM brand / brand:wikidata, or matched by name to a known brand).
+  brand            String?                                @db.VarChar(120)
+  brandWikidata    String?                                @map("brand_wikidata") @db.VarChar(20)
+  /// geography(Point,4326). Google-derived coordinates are cached max 30 days (see location_cached_at).
+  location         Unsupported("geography(Point, 4326)")?
+  locationCachedAt DateTime?                              @map("location_cached_at") @db.Timestamptz(3)
+  mergedIntoId     String?                                @map("merged_into_id") @db.Uuid
+  createdById      String?                                @map("created_by") @db.Uuid
+  createdAt        DateTime                               @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime                               @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deletedAt        DateTime?                              @map("deleted_at") @db.Timestamptz(3)
+
+  createdBy       User?                @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  mergedInto      Restaurant?          @relation("RestaurantMerge", fields: [mergedIntoId], references: [id], onDelete: SetNull)
+  mergedFrom      Restaurant[]         @relation("RestaurantMerge")
+  externalRefs    ExternalPlaceRef[]
+  categories      RestaurantCategory[]
+  reviews         Review[]
+  collectionItems CollectionItem[]
+  favorites       Favorite[]
+  platformLinks   PlatformLink[]
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([source])
+  @@index([status, createdAt])
+  @@index([brandWikidata])
+  /// Created in migration 20261107000100_constraints_and_geo.
+  @@index([location], map: "restaurants_location_gist", type: Gist)
+  @@map("restaurants")
+}
+
+model ExternalPlaceRef {
+  id              String   @id @default(uuid()) @db.Uuid
+  restaurantId    String   @map("restaurant_id") @db.Uuid
+  provider        Provider
+  externalPlaceId String   @map("external_place_id") @db.VarChar(300)
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, externalPlaceId])
+  @@index([restaurantId])
+  @@map("external_place_refs")
+}
+
+/// Cities, towns, suburbs and villages from OpenStreetMap, used for manual location search (no Google needed).
+model Locality {
+  id         String                                @id @default(uuid()) @db.Uuid
+  osmId      String                                @unique @map("osm_id") @db.VarChar(40)
+  name       String                                @db.VarChar(160)
+  kind       String                                @db.VarChar(20)
+  /// Context label such as "Kota Bandung, Jawa Barat" when OSM provides it.
+  context    String?                               @db.VarChar(200)
+  population Int?
+  location   Unsupported("geography(Point, 4326)")
+  createdAt  DateTime                              @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt  DateTime                              @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@index([kind])
+  /// Created in migration 20261108000100_osm_places.
+  @@index([location], map: "localities_location_gist", type: Gist)
+  @@map("localities")
+}
+
+/// Well-known food & drink brands. Key = Wikidata QID, or "MAM-<slug>" for brands without a Wikidata item.
+/// Logos/photos: Wikimedia Commons files under PD / CC0 / CC BY / CC BY-SA, or official files used with the
+/// brand owner's permission (media_source = OWNER, permission_note). Always shown with attribution.
+model Brand {
+  wikidata        String   @id @db.VarChar(20)
+  name            String   @db.VarChar(120)
+  aliases         String[] @default([])
+  description     String?  @db.VarChar(300)
+  website         String?  @db.VarChar(300)
+  category        String?  @db.VarChar(40)
+  logoUrl         String?  @map("logo_url") @db.VarChar(600)
+  logoThumbUrl    String?  @map("logo_thumb_url") @db.VarChar(600)
+  logoLicense     String?  @map("logo_license") @db.VarChar(80)
+  logoLicenseUrl  String?  @map("logo_license_url") @db.VarChar(300)
+  logoAuthor      String?  @map("logo_author") @db.VarChar(300)
+  logoSourceUrl   String?  @map("logo_source_url") @db.VarChar(600)
+  imageUrl        String?  @map("image_url") @db.VarChar(600)
+  imageThumbUrl   String?  @map("image_thumb_url") @db.VarChar(600)
+  imageLicense    String?  @map("image_license") @db.VarChar(80)
+  imageLicenseUrl String?  @map("image_license_url") @db.VarChar(300)
+  imageAuthor     String?  @map("image_author") @db.VarChar(300)
+  imageSourceUrl  String?  @map("image_source_url") @db.VarChar(600)
+  /// Where logo/image rights come from: COMMONS (free license) or OWNER (permission from the brand owner).
+  mediaSource     String?  @map("media_source") @db.VarChar(20)
+  /// Reference to the brand owner's permission (who/when), required when mediaSource = OWNER.
+  permissionNote  String?  @map("permission_note") @db.VarChar(300)
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("brands")
+}
+
+enum EmailTokenPurpose {
+  VERIFY_EMAIL
+  RESET_PASSWORD
+}
+
+/// Single-use e-mail links (verification, password reset). Only a SHA-256 hash of the token is stored.
+model EmailToken {
+  id        String            @id @default(uuid()) @db.Uuid
+  userId    String            @map("user_id") @db.Uuid
+  purpose   EmailTokenPurpose
+  tokenHash String            @unique @map("token_hash") @db.VarChar(64)
+  expiresAt DateTime          @map("expires_at") @db.Timestamptz(3)
+  usedAt    DateTime?         @map("used_at") @db.Timestamptz(3)
+  createdAt DateTime          @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, purpose])
+  @@map("email_tokens")
+}
+
+/// Book-keeping for bulk data imports (shown on the admin integrations page).
+model DataImport {
+  id         String    @id @default(uuid()) @db.Uuid
+  provider   Provider
+  startedAt  DateTime  @default(now()) @map("started_at") @db.Timestamptz(3)
+  finishedAt DateTime? @map("finished_at") @db.Timestamptz(3)
+  inserted   Int       @default(0)
+  updated    Int       @default(0)
+  skipped    Int       @default(0)
+  note       String?   @db.VarChar(500)
+
+  @@index([provider, startedAt])
+  @@map("data_imports")
+}
+
+model Category {
+  id          String   @id @default(uuid()) @db.Uuid
+  slug        String   @unique @db.VarChar(40)
+  nameId      String   @map("name_id") @db.VarChar(40)
+  nameEn      String   @map("name_en") @db.VarChar(40)
+  emoji       String?  @db.VarChar(8)
+  /// Google Places (New) primary types mapped to this category (used for Nearby Search includedTypes).
+  googleTypes String[] @default([]) @map("google_types")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  restaurants RestaurantCategory[]
+
+  @@map("categories")
+}
+
+model RestaurantCategory {
+  restaurantId String         @map("restaurant_id") @db.Uuid
+  categoryId   String         @map("category_id") @db.Uuid
+  source       CategorySource @default(GOOGLE_TYPE)
+  createdAt    DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  category   Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([restaurantId, categoryId])
+  @@index([categoryId])
+  @@map("restaurant_categories")
+}
+
+model PlatformLink {
+  id             String               @id @default(uuid()) @db.Uuid
+  restaurantId   String               @map("restaurant_id") @db.Uuid
+  provider       Provider
+  url            String?              @db.VarChar(500)
+  availability   PlatformAvailability @default(UNVERIFIED)
+  source         PlatformLinkSource
+  submittedById  String?              @map("submitted_by") @db.Uuid
+  verifiedById   String?              @map("verified_by") @db.Uuid
+  lastVerifiedAt DateTime?            @map("last_verified_at") @db.Timestamptz(3)
+  createdAt      DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt      DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  restaurant  Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  submittedBy User?      @relation("PlatformLinkSubmitter", fields: [submittedById], references: [id], onDelete: SetNull)
+  verifiedBy  User?      @relation("PlatformLinkVerifier", fields: [verifiedById], references: [id], onDelete: SetNull)
+
+  @@unique([restaurantId, provider])
+  @@map("restaurant_platform_links")
+}
+
+// ───────────────────────────── Reviews ─────────────────────────────
+model Review {
+  id                String       @id @default(uuid()) @db.Uuid
+  userId            String       @map("user_id") @db.Uuid
+  restaurantId      String       @map("restaurant_id") @db.Uuid
+  tasteRating       Int          @map("taste_rating") @db.SmallInt
+  priceRating       Int          @map("price_rating") @db.SmallInt
+  portionRating     Int          @map("portion_rating") @db.SmallInt
+  cleanlinessRating Int          @map("cleanliness_rating") @db.SmallInt
+  serviceRating     Int          @map("service_rating") @db.SmallInt
+  overallRating     Decimal      @map("overall_rating") @db.Decimal(3, 2)
+  reviewText        String       @map("review_text")
+  pricePaid         Int?         @map("price_paid")
+  currency          String       @default("IDR") @db.Char(3)
+  visitType         VisitType    @map("visit_type")
+  visitedAt         DateTime?    @map("visited_at") @db.Date
+  status            ReviewStatus @default(PUBLISHED)
+  /// Set when a moderator removed the review; prevents the author from reviving it.
+  moderationLocked  Boolean      @default(false) @map("moderation_locked")
+  editCount         Int          @default(0) @map("edit_count")
+  /// Quality signal used for badges/leaderboards (not shown as a rating).
+  qualityScore      Decimal      @default(0) @map("quality_score") @db.Decimal(5, 2)
+  createdAt         DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt         DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deletedAt         DateTime?    @map("deleted_at") @db.Timestamptz(3)
+
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  restaurant Restaurant         @relation(fields: [restaurantId], references: [id], onDelete: Restrict)
+  photos     ReviewPhoto[]
+  reactions  ReviewReaction[]
+  reports    ReviewReport[]
+  moderation ModerationAction[]
+  revisions  ReviewRevision[]
+
+  /// Business rule: one review record per user per restaurant (edits/re-creates reuse this row).
+  @@unique([userId, restaurantId])
+  @@index([restaurantId, status, createdAt(sort: Desc)])
+  @@index([status, createdAt(sort: Desc)])
+  @@index([userId, status])
+  @@map("reviews")
+}
+
+/// Immutable snapshot of a review prior to each edit/moderation, for auditability.
+model ReviewRevision {
+  id        String   @id @default(uuid()) @db.Uuid
+  reviewId  String   @map("review_id") @db.Uuid
+  snapshot  Json
+  reason    String   @db.VarChar(40)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId, createdAt])
+  @@map("review_revisions")
+}
+
+model ReviewPhoto {
+  id         String    @id @default(uuid()) @db.Uuid
+  reviewId   String?   @map("review_id") @db.Uuid
+  userId     String    @map("user_id") @db.Uuid
+  storageKey String    @unique @map("storage_key") @db.VarChar(300)
+  thumbKey   String    @map("thumb_key") @db.VarChar(300)
+  mimeType   String    @map("mime_type") @db.VarChar(40)
+  fileSize   Int       @map("file_size")
+  width      Int
+  height     Int
+  sha256     String    @map("sha256") @db.Char(64)
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  deletedAt  DateTime? @map("deleted_at") @db.Timestamptz(3)
+
+  review Review? @relation(fields: [reviewId], references: [id], onDelete: SetNull)
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId])
+  @@index([userId, createdAt])
+  @@map("review_photos")
+}
+
+model ReviewReaction {
+  id        String       @id @default(uuid()) @db.Uuid
+  reviewId  String       @map("review_id") @db.Uuid
+  userId    String       @map("user_id") @db.Uuid
+  type      ReactionType
+  createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([reviewId, userId, type])
+  @@index([userId])
+  @@map("review_reactions")
+}
+
+model ReviewReport {
+  id             String       @id @default(uuid()) @db.Uuid
+  reviewId       String       @map("review_id") @db.Uuid
+  reporterId     String       @map("reporter_id") @db.Uuid
+  reason         ReportReason
+  details        String?      @db.VarChar(1000)
+  status         ReportStatus @default(OPEN)
+  resolvedById   String?      @map("resolved_by") @db.Uuid
+  resolutionNote String?      @map("resolution_note") @db.VarChar(1000)
+  createdAt      DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  resolvedAt     DateTime?    @map("resolved_at") @db.Timestamptz(3)
+
+  review     Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  reporter   User   @relation("ReportReporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  resolvedBy User?  @relation("ReportResolver", fields: [resolvedById], references: [id], onDelete: SetNull)
+
+  @@unique([reviewId, reporterId])
+  @@index([status, createdAt])
+  @@map("review_reports")
+}
+
+model ModerationAction {
+  id             String               @id @default(uuid()) @db.Uuid
+  reviewId       String               @map("review_id") @db.Uuid
+  moderatorId    String?              @map("moderator_id") @db.Uuid
+  action         ModerationActionType
+  reason         String               @db.VarChar(1000)
+  previousStatus ReviewStatus         @map("previous_status")
+  newStatus      ReviewStatus         @map("new_status")
+  reportId       String?              @map("report_id") @db.Uuid
+  createdAt      DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  review    Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  moderator User?  @relation(fields: [moderatorId], references: [id], onDelete: SetNull)
+
+  @@index([reviewId, createdAt])
+  @@map("moderation_actions")
+}
+
+// ───────────────────────────── Community ─────────────────────────────
+model Collection {
+  id          String    @id @default(uuid()) @db.Uuid
+  userId      String    @map("user_id") @db.Uuid
+  name        String    @db.VarChar(60)
+  description String?   @db.VarChar(280)
+  isPublic    Boolean   @default(false) @map("is_public")
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz(3)
+
+  user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items CollectionItem[]
+
+  @@index([userId, deletedAt])
+  @@map("collections")
+}
+
+model CollectionItem {
+  id           String   @id @default(uuid()) @db.Uuid
+  collectionId String   @map("collection_id") @db.Uuid
+  restaurantId String   @map("restaurant_id") @db.Uuid
+  note         String?  @db.VarChar(200)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, restaurantId])
+  @@map("collection_items")
+}
+
+model Favorite {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @map("user_id") @db.Uuid
+  restaurantId String   @map("restaurant_id") @db.Uuid
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, restaurantId])
+  @@index([restaurantId])
+  @@map("favorites")
+}
+
+model UserBadge {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  code      BadgeCode
+  awardedAt DateTime  @default(now()) @map("awarded_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, code])
+  @@map("user_badges")
+}
+
+model Notification {
+  id        String           @id @default(uuid()) @db.Uuid
+  userId    String           @map("user_id") @db.Uuid
+  type      NotificationType
+  title     String           @db.VarChar(120)
+  body      String           @db.VarChar(500)
+  link      String?          @db.VarChar(300)
+  readAt    DateTime?        @map("read_at") @db.Timestamptz(3)
+  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt, createdAt(sort: Desc)])
+  @@map("notifications")
+}
+
+/// Text queries only. Location is intentionally never stored. Purged after 90 days.
+model SearchHistory {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  query     String   @db.VarChar(120)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("search_history")
+}
+
+// ───────────────────────────── Platform ─────────────────────────────
+model AdminAuditLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  actorId    String?  @map("actor_id") @db.Uuid
+  action     String   @db.VarChar(80)
+  targetType String   @map("target_type") @db.VarChar(40)
+  targetId   String?  @map("target_id") @db.VarChar(64)
+  metadata   Json?
+  ip         String?  @db.VarChar(64)
+  userAgent  String?  @map("user_agent") @db.VarChar(400)
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt(sort: Desc)])
+  @@index([actorId, createdAt])
+  @@index([action])
+  @@map("admin_audit_logs")
+}
+
+model IntegrationStatus {
+  id               String    @id @default(uuid()) @db.Uuid
+  provider         String    @unique @db.VarChar(32)
+  configured       Boolean   @default(false)
+  healthy          Boolean?
+  lastCheckedAt    DateTime? @map("last_checked_at") @db.Timestamptz(3)
+  lastSuccessAt    DateTime? @map("last_success_at") @db.Timestamptz(3)
+  lastErrorAt      DateTime? @map("last_error_at") @db.Timestamptz(3)
+  lastErrorMessage String?   @map("last_error_message") @db.VarChar(500)
+  successCount     Int       @default(0) @map("success_count")
+  errorCount       Int       @default(0) @map("error_count")
+  totalLatencyMs   BigInt    @default(0) @map("total_latency_ms")
+  windowStartedAt  DateTime  @default(now()) @map("window_started_at") @db.Timestamptz(3)
+  updatedAt        DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("integration_status")
+}
+
+model AppConfig {
+  key         String   @id @db.VarChar(64)
+  value       Json
+  updatedById String?  @map("updated_by") @db.Uuid
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  updatedBy User? @relation(fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@map("app_config")
+}

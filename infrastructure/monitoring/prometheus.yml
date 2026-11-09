@@ -1,0 +1,18 @@
+# Scrapes the API's Prometheus endpoint. Expose it only on the internal network.
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+
+rule_files: [alerts.yml]
+
+scrape_configs:
+  - job_name: mam-api
+    metrics_path: /api/v1/health/metrics
+    static_configs:
+      - targets: ['api:4000']
+  - job_name: postgres
+    static_configs:
+      - targets: ['postgres-exporter:9187']   # prometheuscommunity/postgres-exporter
+  - job_name: redis
+    static_configs:
+      - targets: ['redis-exporter:9121']      # oliver006/redis_exporter

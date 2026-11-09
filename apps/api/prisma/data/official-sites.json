@@ -1,0 +1,634 @@
+[
+ {
+  "name": "KFC",
+  "wikidata": "Q524757",
+  "website": "https://kfcku.co.id/",
+  "title": "KFC Indonesia",
+  "checkedAt": "2026-11-07T13:53:27.685Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Starbucks",
+  "wikidata": "Q37158",
+  "website": "https://www.starbucks.co.id/",
+  "title": "Starbucks: The Best Coffee Makers and Cold Brew Coffee | Starbucks Coffee Company",
+  "checkedAt": "2026-11-07T13:53:28.933Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "McDonald's",
+  "wikidata": "Q38076",
+  "website": "https://www.mcdonalds.co.id/",
+  "title": "Home | McDonald's Indonesia",
+  "checkedAt": "2026-11-07T13:53:29.922Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Pizza Hut",
+  "wikidata": "Q191615",
+  "website": "https://www.pizzahut.co.id/",
+  "title": "Pizza Hut Order Now!",
+  "checkedAt": "2026-11-07T13:47:55.814Z",
+  "note": "verified after trying: https://www.pizzahut.com/ -> 403; https://www.pizzahut.co.id/ -> 200"
+ },
+ {
+  "name": "Rumah Makan Sederhana",
+  "wikidata": "Q20427355",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:53:41.660Z",
+  "note": "not verified: https://rmsederhana.com/ -> ENOTFOUND; https://www.sederhana.co.id/ -> UND_ERR_CONNECT_TIMEOUT"
+ },
+ {
+  "name": "Holland Bakery",
+  "wikidata": "Q19726345",
+  "website": "https://www.hollandbakery.co.id/",
+  "title": "Holland Bakery",
+  "checkedAt": "2026-11-07T13:48:08.596Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Mixue",
+  "wikidata": "Q107406476",
+  "website": "https://www.mxbc.com/",
+  "title": "蜜雪冰城-始于1997 冰淇淋与茶",
+  "checkedAt": "2026-11-07T13:53:47.799Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Kopi Kenangan",
+  "wikidata": "Q97221992",
+  "website": "https://kenanganglobal.com/id/",
+  "title": "From Indonesia to the World",
+  "checkedAt": "2026-11-07T13:53:48.610Z",
+  "note": "verified (brand in page text only)"
+ },
+ {
+  "name": "HokBen",
+  "wikidata": "Q5877948",
+  "website": "https://www.hokben.co.id/",
+  "title": "HokBen | Restoran Jepang Siap Saji Halal dan Terbaik di Indonesia",
+  "checkedAt": "2026-11-07T13:48:23.259Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Mie Gacoan",
+  "wikidata": "Q111995141",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:53:50.209Z",
+  "note": "miegacoan.com loads but is a \"Coming Soon / Under Construction\" template page, rejected; no other domain verified"
+ },
+ {
+  "name": "Richeese Factory",
+  "wikidata": "Q22915087",
+  "website": "https://richeesefactory.com/",
+  "title": "Richeese Factory",
+  "checkedAt": "2026-11-07T13:53:50.897Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Dunkin'",
+  "wikidata": "Q847743",
+  "website": "https://www.dunkin.co.id/",
+  "title": "Home - DUNKIN'",
+  "checkedAt": "2026-11-07T13:53:52.941Z",
+  "note": "verified after trying: https://www.dunkindonuts.co.id/ -> ENOTFOUND; https://dunkindonuts.co.id/ -> ENOTFOUND; https://www.dunkin.co.id/ -> 200"
+ },
+ {
+  "name": "Point Coffee",
+  "wikidata": "Q124651558",
+  "website": "https://pointcoffee.id/",
+  "title": "",
+  "checkedAt": "2026-11-07T13:48:27.625Z",
+  "note": "verified (brand in page text only)"
+ },
+ {
+  "name": "Burger King",
+  "wikidata": "Q177054",
+  "website": "https://www.bk.com/",
+  "title": "Burger King® | Flame-Grilled Burgers, Menu & Locations",
+  "checkedAt": "2026-11-07T13:54:16.668Z",
+  "note": "verified after trying: https://www.burgerking.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://burgerking.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://www.bk.com/ -> 200"
+ },
+ {
+  "name": "Roti'O",
+  "wikidata": "Q124354233",
+  "website": "https://rotio.id/",
+  "title": "Home",
+  "checkedAt": "2026-11-07T13:48:30.447Z",
+  "note": "verified (brand in page text only)"
+ },
+ {
+  "name": "J.CO Donuts & Coffee",
+  "wikidata": "Q4260444",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:54:19.323Z",
+  "note": "not verified: https://www.jcodonuts.com/ -> 202; https://www.jcodonuts.com/id/en -> 202"
+ },
+ {
+  "name": "Solaria",
+  "wikidata": "Q118136107",
+  "website": "https://solariaresto.co.id/",
+  "title": "Solaria Indonesia",
+  "checkedAt": "2026-11-07T13:48:33.457Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "California Fried Chicken",
+  "wikidata": "Q5020502",
+  "website": "https://www.cfcindonesia.com/",
+  "title": "CFC Indonesia",
+  "checkedAt": "2026-11-07T13:54:19.985Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Tomoro Coffee",
+  "wikidata": "Q126326801",
+  "website": "https://www.tomoro-coffee.id/about",
+  "title": "TOMORO COFFEE",
+  "checkedAt": "2026-11-07T13:48:34.950Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Domino's Pizza",
+  "wikidata": "Q839466",
+  "website": "https://www.dominos.co.id/",
+  "title": "Dominos's Indonesia",
+  "checkedAt": "2026-11-07T13:54:21.968Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Janji Jiwa",
+  "wikidata": "Q124030785",
+  "website": "https://jiwagroup.com/id/",
+  "title": "JIWA GROUP",
+  "checkedAt": "2026-11-07T13:54:22.879Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "A&W",
+  "wikidata": "Q277641",
+  "website": "https://awrestaurants.com/",
+  "title": "A&amp;W Restaurants",
+  "checkedAt": "2026-11-07T13:54:24.480Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Chatime",
+  "wikidata": "Q16829306",
+  "website": "https://chatime.co.id/",
+  "title": "Chatime Indonesia",
+  "checkedAt": "2026-11-07T13:54:25.609Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Rocket Chicken",
+  "wikidata": "Q67462086",
+  "website": "https://rocketchicken.co.id/",
+  "title": "Rocket Chiken",
+  "checkedAt": "2026-11-07T13:48:40.877Z",
+  "note": "verified (brand in page text only)"
+ },
+ {
+  "name": "Yoshinoya",
+  "wikidata": "Q776272",
+  "website": "https://www.yoshinoya.com/",
+  "title": "吉野家公式ホームページ",
+  "checkedAt": "2026-11-07T13:54:32.738Z",
+  "note": "verified after trying: https://yoshinoya.co.id/ -> ECONNREFUSED; https://www.yoshinoya.co.id/ -> ECONNREFUSED; https://www.yoshinoya.com/ -> 200"
+ },
+ {
+  "name": "Momoyo",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:54:34.685Z",
+  "note": "momoyo.id is an unrelated news site (rejected); not verified: https://momoyo.co.id/ -> ENOTFOUND; https://www.momoyo.co.id/ -> ENOTFOUND; https://momoyo.id/ -> 200 (200 but brand name not found)"
+ },
+ {
+  "name": "Kopi Tuku",
+  "wikidata": null,
+  "website": "https://kopituku.com/",
+  "title": "Kopituku — Kopi Susu Khas Nusantara dari Biji Kopi Lokal Pilihan",
+  "checkedAt": "2026-11-07T13:54:36.284Z",
+  "note": "verified after trying: https://tokokopituku.com/ -> ENOTFOUND; https://kopituku.com/ -> 200"
+ },
+ {
+  "name": "Fore Coffee",
+  "wikidata": "Q66424373",
+  "website": "https://fore.coffee/",
+  "title": "Home - Fore Coffee",
+  "checkedAt": "2026-11-07T13:54:37.033Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "The Harvest",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:54:38.768Z",
+  "note": "not verified: https://theharvest.co.id/ -> ENOTFOUND; https://www.theharvest.co.id/ -> ENOTFOUND; https://harvest.co.id/ -> CERT_HAS_EXPIRED"
+ },
+ {
+  "name": "Warunk Upnormal",
+  "wikidata": "Q67463292",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:54:40.113Z",
+  "note": "not verified: https://www.warunkupnormal.com/ -> UNABLE_TO_VERIFY_LEAF_SIGNATURE; https://warunkupnormal.com/ -> UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+ },
+ {
+  "name": "Ayam Bakar Wong Solo",
+  "wikidata": null,
+  "website": "https://wongsolo.co.id/",
+  "title": "Ayam Bakar Wong Solo | Halallan Thayyiban",
+  "checkedAt": "2026-11-07T13:49:30.584Z",
+  "note": "verified after trying: https://www.wongsolo.com/ -> UND_ERR_CONNECT_TIMEOUT; https://wongsolo.com/ -> UND_ERR_CONNECT_TIMEOUT; https://wongsolo.co.id/ -> 200"
+ },
+ {
+  "name": "Sushi Tei",
+  "wikidata": "Q122534663",
+  "website": "https://sushitei.com/",
+  "title": "Sushi Tei Singapore",
+  "checkedAt": "2026-11-07T13:54:41.295Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Waroeng Steak & Shake",
+  "wikidata": "Q13098421",
+  "website": "https://waroengsteakandshake.com/",
+  "title": "Waroeng Steak & Shake | Steaknya Indonesia",
+  "checkedAt": "2026-11-07T13:54:41.985Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "MAKO Cake and Bakery",
+  "wikidata": null,
+  "website": "https://makobakery.com/",
+  "title": "MAKO Cake and Bakery",
+  "checkedAt": "2026-11-07T13:54:42.647Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Excelso",
+  "wikidata": "Q12482656",
+  "website": "https://excelso-coffee.com/",
+  "title": "Excelso Coffee",
+  "checkedAt": "2026-11-07T13:54:43.261Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Subway",
+  "wikidata": "Q244457",
+  "website": "https://www.subway.co.id/",
+  "title": "Subway Indonesia - Best Sandwiches Menu",
+  "checkedAt": "2026-11-07T13:49:39.464Z",
+  "note": "verified after trying: https://subway.com -> 401; https://www.subway.co.id/ -> 200"
+ },
+ {
+  "name": "Marugame Seimen",
+  "wikidata": "Q10877253",
+  "website": "https://jp.marugame.com/",
+  "title": "丸亀製麺",
+  "checkedAt": "2026-11-07T13:55:05.422Z",
+  "note": "verified after trying: https://marugame.co.id/ -> EAI_AGAIN; https://www.marugame.co.id/ -> EAI_AGAIN; https://jp.marugame.com/ -> 200"
+ },
+ {
+  "name": "Bakmi GM",
+  "wikidata": "Q25464984",
+  "website": "https://www.bakmigm.com/",
+  "title": "Bakmi GM",
+  "checkedAt": "2026-11-07T13:55:10.610Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Pepper Lunch",
+  "wikidata": "Q1016072",
+  "website": "https://pepperlunch.com/",
+  "title": "Pepper Lunch — Sizzle It Your Way",
+  "checkedAt": "2026-11-07T13:55:18.495Z",
+  "note": "verified after trying: https://pepperlunch.co.id/ -> ECONNREFUSED; https://www.pepperlunch.co.id/ -> ECONNREFUSED; https://pepperlunch.com/ -> 200"
+ },
+ {
+  "name": "Sate Khas Senayan",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:55:42.306Z",
+  "note": "not verified: https://www.satekhassenayan.com/ -> UND_ERR_CONNECT_TIMEOUT; https://satekhassenayan.com/ -> UND_ERR_CONNECT_TIMEOUT; https://www.senayan.co.id/ -> EAI_AGAIN"
+ },
+ {
+  "name": "The Coffee Bean & Tea Leaf",
+  "wikidata": "Q1141384",
+  "website": "https://www.coffeebean.com/",
+  "title": "Buy Coffee, Tea, Powders Online | The Coffee Bean &amp; Tea Leaf | The Coffee Bean &amp; Tea Leaf® Online Store",
+  "checkedAt": "2026-11-07T13:55:45.861Z",
+  "note": "verified after trying: https://www.coffeebean.co.id/ -> EAI_AGAIN; https://coffeebean.co.id/ -> EAI_AGAIN; https://www.coffeebean.com -> 200"
+ },
+ {
+  "name": "Texas Chicken",
+  "wikidata": "Q1089932",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:55:58.416Z",
+  "note": "not verified: https://www.texaschicken.co.id/ -> ENOTFOUND; https://texaschicken.co.id/ -> ENOTFOUND; https://www.texaschicken.com/ -> UND_ERR_CONNECT_TIMEOUT"
+ },
+ {
+  "name": "Maxx Coffee",
+  "wikidata": "Q124651563",
+  "website": "https://www.maxx-coffee.com/",
+  "title": "MAXX COFFEE",
+  "checkedAt": "2026-11-07T13:55:59.172Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Baskin-Robbins",
+  "wikidata": "Q584601",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:56:11.741Z",
+  "note": "not verified: https://www.baskinrobbins.co.id/ -> ENOTFOUND; https://baskinrobbins.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://www.baskinrobbins.com/ -> 403"
+ },
+ {
+  "name": "Haus!",
+  "wikidata": "Q114824757",
+  "website": "https://haus.co.id/",
+  "title": "Haus Indonesia",
+  "checkedAt": "2026-11-07T13:50:34.927Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Rotiboy",
+  "wikidata": "Q2168802",
+  "website": "https://www.rotiboy.com/",
+  "title": "Home - Rotiboy Bakeshoppe Sdn Bhd",
+  "checkedAt": "2026-11-07T13:56:12.841Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Wendy's",
+  "wikidata": "Q550258",
+  "website": "http://wendys.transfoodbeverage.com/",
+  "title": "Beranda - Wendy&#039;s",
+  "checkedAt": "2026-11-07T13:56:14.006Z",
+  "note": "Indonesian operator (Trans Food Beverage) site, verified; global wendys.com also loads. verified (brand in page text only)"
+ },
+ {
+  "name": "Popeyes",
+  "wikidata": "Q1330910",
+  "website": "https://popeyes.co.id/",
+  "title": "Index - Popeyes",
+  "checkedAt": "2026-11-07T13:50:38.456Z",
+  "note": "verified after trying: https://www.popeyes.co.id/ -> ENOTFOUND; https://popeyes.co.id/ -> 200"
+ },
+ {
+  "name": "Wingstop",
+  "wikidata": "Q8025339",
+  "website": "https://wingstop.id/",
+  "title": "Wingstop Juaranya Rasa",
+  "checkedAt": "2026-11-07T13:50:39.537Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Gudeg Yu Djum",
+  "wikidata": "Q19745849",
+  "website": "https://gudegyudjum.com/",
+  "title": "Gudeg Yu Djum",
+  "checkedAt": "2026-11-07T13:56:15.020Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Tous Les Jours",
+  "wikidata": "Q3535609",
+  "website": "https://www.tlj.co.kr/index.asp",
+  "title": "�ǰ��� ���ϸ� ����Ŀ��, ��, ����ũ, ������ġ, �̺�Ʈ, ����ȳ�",
+  "checkedAt": "2026-11-07T13:56:20.224Z",
+  "note": "verified after trying: https://www.tlj.co.id/ -> CERT_HAS_EXPIRED; https://tlj.co.id/ -> CERT_HAS_EXPIRED; https://www.tlj.co.kr/ -> 200"
+ },
+ {
+  "name": "Es Teh Indonesia",
+  "wikidata": null,
+  "website": "https://www.estehindonesia.com/",
+  "title": "Esteh Indonesia",
+  "checkedAt": "2026-11-07T13:56:22.441Z",
+  "note": "verified after trying: https://esteh-indonesia.com/ -> ENOTFOUND; https://estehindonesia.com/ -> 200"
+ },
+ {
+  "name": "Kebab Baba Rafi",
+  "wikidata": "Q6382370",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:56:23.694Z",
+  "note": "not verified: http://www.babarafi.co.id -> 403; https://babarafi.co.id/ -> UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+ },
+ {
+  "name": "Bakso Boedjangan",
+  "wikidata": null,
+  "website": "https://baksoboedjangan.id/",
+  "title": "Bakso Boedjangan",
+  "checkedAt": "2026-11-07T13:50:48.940Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Ayam Geprek Bensu",
+  "wikidata": "Q96276741",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:56:35.411Z",
+  "note": "not verified: https://geprekbensuindonesia.com -> UND_ERR_CONNECT_TIMEOUT; https://geprekbensu.com/ -> ENOTFOUND"
+ },
+ {
+  "name": "Cafe Coffee Day",
+  "wikidata": "Q5017235",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:56:36.201Z",
+  "note": "not verified: https://www.cafecoffeeday.com -> UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+ },
+ {
+  "name": "CoCo Fresh Tea & Juice",
+  "wikidata": "Q65084369",
+  "website": "https://www.coco-tea.com/",
+  "title": "CoCo Bubble Tea - World Leading Bubble Tea",
+  "checkedAt": "2026-11-07T13:56:37.124Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Auntie Anne's",
+  "wikidata": "Q4822010",
+  "website": "https://www.auntieannes.com/",
+  "title": "Freshly Baked Soft Pretzels: Auntie Anne&#x27;s Pretzels",
+  "checkedAt": "2026-11-07T13:56:39.376Z",
+  "note": "verified after trying: https://www.auntieannes.co.id/ -> CERT_HAS_EXPIRED; https://auntieannes.co.id/ -> CERT_HAS_EXPIRED; https://www.auntieannes.com/ -> 200"
+ },
+ {
+  "name": "Gloria Jean's Coffees",
+  "wikidata": "Q2666365",
+  "website": "https://www.gloriajeans.com.au/",
+  "title": "Gloria Jeans | Discover Great Coffee Today",
+  "checkedAt": "2026-11-07T13:56:43.242Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Flash Coffee",
+  "wikidata": "Q118627777",
+  "website": "https://flash-coffee.com/",
+  "title": "Flash Coffee - Kebanggaan Indonesia",
+  "checkedAt": "2026-11-07T13:56:45.097Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Black Canyon Coffee",
+  "wikidata": "Q125870828",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:56:57.555Z",
+  "note": "not verified: https://blackcanyoncoffee.com/ -> UND_ERR_CONNECT_TIMEOUT; https://blackcanyon.co.id/ -> ENOTFOUND"
+ },
+ {
+  "name": "Quickly",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:56:58.789Z",
+  "note": "not verified: https://quickly.co.id/ -> ENOTFOUND; https://www.quickly.co.id/ -> ENOTFOUND"
+ },
+ {
+  "name": "Loving Hut",
+  "wikidata": "Q3491655",
+  "website": "https://www.lovinghut.com/",
+  "title": "[素食 Vegan][Vegetarian Restaurant] 愛家素食網 Loving Hut 素食餐廳‧蔬食餐廳料理‧素食便當‧素食簡餐快餐‧台北素食‧台中素食‧高雄素食‧台南素食‧嘉義素食",
+  "checkedAt": "2026-11-07T13:56:59.816Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Es Teler 77",
+  "wikidata": "Q5396630",
+  "website": "https://esteler77.com/id",
+  "title": "Es Teler 77",
+  "checkedAt": "2026-11-07T13:57:03.786Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Genki Sushi",
+  "wikidata": "Q5533323",
+  "website": "https://genkisushi.co.id/",
+  "title": "Welcome to Genki Sushi Indonesia Website",
+  "checkedAt": "2026-11-07T13:57:06.760Z",
+  "note": "verified after trying: https://www.genki-sushi.co.id/ -> ENOTFOUND; https://genkisushi.co.id/ -> 200"
+ },
+ {
+  "name": "Kopi Lain Hati",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:57:08.499Z",
+  "note": "not verified: https://lainhati.coffee/ -> ENOTFOUND; https://kopilainhati.com/ -> ENOTFOUND; https://kopilainhati.id/ -> ENOTFOUND"
+ },
+ {
+  "name": "Biggby Coffee",
+  "wikidata": "Q4906876",
+  "website": "https://biggby.com/",
+  "title": "Home - BIGGBY COFFEE®",
+  "checkedAt": "2026-11-07T13:57:09.392Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Häagen-Dazs",
+  "wikidata": "Q1143333",
+  "website": "https://www.haagen-dazs.global/en-id/",
+  "title": "Ice Cream Shops | Häagen-Dazs Locations & Cafes",
+  "checkedAt": "2026-11-07T13:57:13.652Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "% Arabica",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:57:17.736Z",
+  "note": "not verified: https://arabica.coffee/ -> 403; https://arabica.coffee/id/ -> 403; https://arabica.id/ -> 530"
+ },
+ {
+  "name": "Carl's Jr.",
+  "wikidata": "Q1043486",
+  "website": "https://www.carlsjr.com/",
+  "title": "Carl’s Jr. - Order Burgers, Breakfast, Chicken & More",
+  "checkedAt": "2026-11-07T13:57:22.280Z",
+  "note": "verified after trying: https://www.carlsjr.co.id/ -> EAI_AGAIN; https://carlsjr.co.id/ -> EAI_AGAIN; https://www.carlsjr.com -> 200"
+ },
+ {
+  "name": "Martabak Orins",
+  "wikidata": null,
+  "website": "https://martabakpizzaorins.com/",
+  "title": "Martabak Legend Indonesia 2025 - Martabak Pizza Orins",
+  "checkedAt": "2026-11-07T13:57:46.439Z",
+  "note": "verified after trying: https://orins.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://www.orins.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://martabakorins.com/ -> 200"
+ },
+ {
+  "name": "Dum Dum",
+  "wikidata": "Q67901309",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:57:48.015Z",
+  "note": "not verified: http://www.dumdumthaidrinks.com -> 200 (200 but brand name not found); https://dumdumthaidrinks.com/ -> 200 (200 but brand name not found)"
+ },
+ {
+  "name": "Pizza Marzano",
+  "wikidata": null,
+  "website": "https://www.pizzamarzano.co.id/",
+  "title": "Home - Pizza Marzano Indonesia",
+  "checkedAt": "2026-11-07T13:52:26.008Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "Dairy Queen",
+  "wikidata": "Q1141226",
+  "website": "https://www.dairyqueen.co.id/",
+  "title": "Dairy Queen",
+  "checkedAt": "2026-11-07T13:52:27.797Z",
+  "note": "verified after trying: https://www.dairyqueen.com/ -> 403; https://www.dairyqueen.co.id/ -> 200"
+ },
+ {
+  "name": "Kopi Soe",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:58:04.711Z",
+  "note": "not verified: https://kopisoe.com/ -> This operation was aborted; https://kopisoe.co.id/ -> ENOTFOUND; https://www.kopisoe.com/ -> ENOTFOUND"
+ },
+ {
+  "name": "Hard Rock Cafe",
+  "wikidata": "Q918151",
+  "website": "https://cafe.hardrock.com/locations.aspx",
+  "title": "Hard Rock Cafe Locations | Dining Near You",
+  "checkedAt": "2026-11-07T13:58:05.636Z",
+  "note": "verified (brand in title)"
+ },
+ {
+  "name": "PappaRich",
+  "wikidata": "Q95721282",
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:58:22.441Z",
+  "note": "not verified: https://papparich.my/ -> 402; https://papparich.co.id/ -> ENOTFOUND; https://www.papparich.com.my/ -> This operation was aborted"
+ },
+ {
+  "name": "BreadTalk",
+  "wikidata": "Q1106640",
+  "website": "https://www.breadtalk.com/",
+  "title": "BreadTalk Group &#8211; BreadTalk Group",
+  "checkedAt": "2026-11-07T13:58:47.985Z",
+  "note": "verified after trying: https://www.breadtalk.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://breadtalk.co.id/ -> UND_ERR_CONNECT_TIMEOUT; https://www.breadtalk.com -> 200"
+ },
+ {
+  "name": "Bakmi Naga",
+  "wikidata": null,
+  "website": null,
+  "title": null,
+  "checkedAt": "2026-11-07T13:58:49.252Z",
+  "note": "not verified: https://bakminaga.com/ -> ERR_SSL_WRONG_VERSION_NUMBER; https://www.bakminaga.com/ -> ERR_SSL_WRONG_VERSION_NUMBER"
+ }
+]

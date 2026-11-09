@@ -1,0 +1,43 @@
+@import '@mam/design-tokens/dist/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-text antialiased;
+    font-feature-settings: 'ss01';
+  }
+  :focus-visible {
+    outline: 2px solid var(--mam-primary-dark);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg bg-surface shadow-card border border-border;
+  }
+  .skeleton {
+    @apply animate-pulse rounded-md bg-surface-muted;
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .scroll-row {
+    @apply flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x;
+    scrollbar-width: thin;
+  }
+}
